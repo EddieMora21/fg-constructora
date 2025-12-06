@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Brand Colors - FG Constructores */
+@theme {
+  --color-brand-primary: #001E55;
+  --color-brand-secondary: #333333;
+  --color-brand-accent: #BE961E;
+  --color-brand-light: #F5F7FA;
+  --color-brand-medium: #E2E8F0;
+  --color-brand-dark: #001533;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
