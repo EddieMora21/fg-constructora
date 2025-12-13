@@ -328,7 +328,7 @@ const ProjectDetail = () => {
 
             {/* --- HORIZONTAL GALLERY --- */}
             <section className="gallery-wrapper relative h-screen bg-brand-primary text-white overflow-hidden flex flex-col justify-center">
-                <div className="absolute top-8 md:top-16 left-8 md:left-16 z-20">
+                <div className="absolute top-20 md:top-16 left-8 md:left-16 z-20">
                     <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
                     <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">
                         <ArrowRight size={12} /> Desliza o haz clic para ampliar
