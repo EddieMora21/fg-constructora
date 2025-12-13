@@ -20,38 +20,26 @@ const Home = () => {
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
-            // Responsive Animation: Horizontal Scroll only on Desktop
-            ScrollTrigger.matchMedia({
-                // Desktop (Horizontal Scroll with Pinning)
-                "(min-width: 768px)": function () {
-                    const section = sectionRef.current;
-                    const trigger = triggerRef.current;
+            // Horizontal Scroll for Featured Projects
+            const section = sectionRef.current;
+            const trigger = triggerRef.current;
 
-                    if (section && trigger) {
-                        const scrollAmount = section.scrollWidth - window.innerWidth;
+            if (section && trigger) {
+                const scrollAmount = section.scrollWidth - window.innerWidth;
 
-                        gsap.to(section, {
-                            x: -scrollAmount,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: trigger,
-                                start: "top top",
-                                end: "+=" + scrollAmount,
-                                pin: true,
-                                scrub: 1,
-                                anticipatePin: 1
-                            }
-                        });
+                gsap.to(section, {
+                    x: -scrollAmount,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: trigger,
+                        start: "top top",
+                        end: "+=" + scrollAmount, // Scroll duration matches horizontal width
+                        pin: true,
+                        scrub: 1,
+                        anticipatePin: 1
                     }
-                },
-                // Mobile (Optional: Cleanups or specific mobile animations can go here)
-                "(max-width: 767px)": function () {
-                    // Start from natural state
-                    if (sectionRef.current) {
-                        gsap.set(sectionRef.current, { x: 0 });
-                    }
-                }
-            });
+                });
+            }
 
             // Reveal other sections
             gsap.utils.toArray('.reveal-on-scroll').forEach(section => {
@@ -165,7 +153,7 @@ const Home = () => {
             </section>
 
             {/* Featured Projects - Horizontal Scroll Section */}
-            <section ref={triggerRef} className="relative h-screen bg-black overflow-x-auto snap-x snap-mandatory md:overflow-hidden flex flex-col justify-center scrollbar-hide">
+            <section ref={triggerRef} className="relative h-screen bg-black overflow-hidden flex flex-col justify-center">
 
                 {/* Intro Title Overlay */}
                 <div className="absolute top-0 left-0 right-0 pt-24 px-8 md:px-24 md:pt-40 z-50 pointer-events-none bg-gradient-to-b from-black/90 via-black/50 to-transparent">
@@ -177,7 +165,7 @@ const Home = () => {
                 <div ref={sectionRef} className="flex h-full w-fit"> {/* Dynamic Width matched to children */}
 
                     {/* Project 1: Casa Corteza */}
-                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden snap-center">
+                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/1" className="block w-full h-full relative">
                             <img
                                 src={imgCorteza}
@@ -199,7 +187,7 @@ const Home = () => {
                     </div>
 
                     {/* Project 2: Colinas del Poro */}
-                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden snap-center">
+                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/2" className="block w-full h-full relative">
                             <img
                                 src={imgColinas}
@@ -221,7 +209,7 @@ const Home = () => {
                     </div>
 
                     {/* Project 3: Residencia D Barva */}
-                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden snap-center">
+                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/3" className="block w-full h-full relative">
                             <img
                                 src={imgBarva}
