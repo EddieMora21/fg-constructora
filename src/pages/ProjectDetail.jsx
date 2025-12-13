@@ -4,6 +4,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, MapPin, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { useLanguage } from '../i18n';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -152,29 +157,32 @@ const ProjectDetail = () => {
                 }
             });
 
-            // 4. GALLERY: Horizontal Scroll
-            const galleryTrack = galleryRef.current;
-            if (galleryTrack) {
-                const totalWidth = galleryTrack.scrollWidth;
-                const windowWidth = window.innerWidth;
-                const scrollAmount = totalWidth - windowWidth; // How much we need to scroll horizontally
+            // 4. GALLERY: Horizontal Scroll (Desktop Only)
+            ScrollTrigger.matchMedia({
+                "(min-width: 768px)": function () {
+                    const galleryTrack = galleryRef.current;
+                    if (galleryTrack) {
+                        const totalWidth = galleryTrack.scrollWidth;
+                        const windowWidth = window.innerWidth;
+                        const scrollAmount = totalWidth - windowWidth;
 
-                // Only enable if content overflows
-                if (scrollAmount > 0) {
-                    gsap.to(galleryTrack, {
-                        x: -scrollAmount,
-                        ease: "none",
-                        scrollTrigger: {
-                            trigger: ".gallery-wrapper",
-                            start: "top top",
-                            end: "+=" + scrollAmount, // Scroll distance vertical = scroll distance horizontal
-                            pin: true,
-                            scrub: 1,
-                            anticipatePin: 1
+                        if (scrollAmount > 0) {
+                            gsap.to(galleryTrack, {
+                                x: -scrollAmount,
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: ".gallery-wrapper",
+                                    start: "top top",
+                                    end: "+=" + scrollAmount,
+                                    pin: true,
+                                    scrub: 1,
+                                    anticipatePin: 1
+                                }
+                            });
                         }
-                    });
+                    }
                 }
-            }
+            });
 
             // 5. NEXT PROJECT: Reveal Animation
             gsap.from(".next-project-bg", {
@@ -327,49 +335,78 @@ const ProjectDetail = () => {
             </section>
 
             {/* --- HORIZONTAL GALLERY --- */}
-            <section className={`gallery-wrapper relative h-screen bg-brand-primary text-white overflow-hidden flex flex-col justify-center ${isLightboxOpen ? 'invisible' : ''}`}>
-                <div className="absolute top-20 md:top-16 left-8 md:left-16 z-20">
+            <section className={`gallery-wrapper relative bg-brand-primary text-white overflow-hidden ${isLightboxOpen ? 'invisible' : ''}`}>
+                <div className="pt-20 pb-8 md:pt-16 px-8 md:px-16">
                     <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
                     <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">
                         <ArrowRight size={12} /> Desliza o haz clic para ampliar
                     </p>
                 </div>
 
-                {/* Track that moves horizontally */}
-                <div ref={galleryRef} className="gallery-track flex gap-8 md:gap-16 px-8 md:px-16" style={{ width: 'fit-content' }}>
+                {/* MOBILE: Swiper Carousel */}
+                <div className="md:hidden pb-12">
+                    <Swiper
+                        modules={[FreeMode, Pagination]}
+                        spaceBetween={16}
+                        slidesPerView={1.2}
+                        freeMode={true}
+                        pagination={{ clickable: true }}
+                        className="px-4"
+                    >
+                        {project.images.slice(3).map((img, index) => {
+                            const actualIndex = index + 3;
+                            return (
+                                <SwiperSlide key={index}>
+                                    <div
+                                        onClick={() => openLightbox(actualIndex)}
+                                        className="relative aspect-[3/4] overflow-hidden cursor-zoom-in"
+                                    >
+                                        <img
+                                            src={img}
+                                            alt={`Detalle ${actualIndex}`}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-black/20"></div>
+                                        <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
+                                            {String(actualIndex + 1).padStart(2, '0')}
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            );
+                        })}
+                    </Swiper>
+                </div>
 
-                    {/* Initial Spacer for text */}
-                    <div className="w-[10vw] md:w-[20vw] flex-shrink-0"></div>
-
-                    {project.images.slice(3).map((img, index) => {
-                        const actualIndex = index + 3; // Correct index in the original array
-                        return (
-                            <div
-                                key={index}
-                                onClick={() => openLightbox(actualIndex)}
-                                className="gallery-item relative w-[80vw] md:w-[60vh] aspect-[3/4] md:aspect-[4/3] flex-shrink-0 group overflow-hidden opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-zoom-in"
-                            >
-                                <img
-                                    src={img}
-                                    alt={`Detalle ${actualIndex}`}
-                                    className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                                />
-                                {/* Overlay with zoom icon */}
-                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                    <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-300">
-                                        <ZoomIn size={24} />
+                {/* DESKTOP: GSAP Horizontal Scroll */}
+                <div className="hidden md:block h-screen">
+                    <div ref={galleryRef} className="gallery-track flex gap-16 px-16 h-full items-center" style={{ width: 'fit-content' }}>
+                        <div className="w-[20vw] flex-shrink-0"></div>
+                        {project.images.slice(3).map((img, index) => {
+                            const actualIndex = index + 3;
+                            return (
+                                <div
+                                    key={index}
+                                    onClick={() => openLightbox(actualIndex)}
+                                    className="gallery-item relative w-[60vh] aspect-[4/3] flex-shrink-0 group overflow-hidden opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-zoom-in"
+                                >
+                                    <img
+                                        src={img}
+                                        alt={`Detalle ${actualIndex}`}
+                                        className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                                    />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                                            <ZoomIn size={24} />
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
+                                        {String(actualIndex + 1).padStart(2, '0')}
                                     </div>
                                 </div>
-                                {/* Number Indicator */}
-                                <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
-                                    {String(actualIndex + 1).padStart(2, '0')}
-                                </div>
-                            </div>
-                        );
-                    })}
-
-                    {/* Final Spacer */}
-                    <div className="w-[10vw] md:w-[20vw] flex-shrink-0"></div>
+                            );
+                        })}
+                        <div className="w-[20vw] flex-shrink-0"></div>
+                    </div>
                 </div>
             </section>
 
