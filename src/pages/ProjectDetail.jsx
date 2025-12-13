@@ -327,7 +327,7 @@ const ProjectDetail = () => {
             </section>
 
             {/* --- HORIZONTAL GALLERY --- */}
-            <section className="gallery-wrapper relative h-screen bg-brand-primary text-white overflow-hidden flex flex-col justify-center">
+            <section className={`gallery-wrapper relative h-screen bg-brand-primary text-white overflow-hidden flex flex-col justify-center ${isLightboxOpen ? 'invisible' : ''}`}>
                 <div className="absolute top-20 md:top-16 left-8 md:left-16 z-20">
                     <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
                     <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">
@@ -395,36 +395,39 @@ const ProjectDetail = () => {
 
             {/* --- LIGHTBOX MODAL --- */}
             {isLightboxOpen && lightboxIndex !== null && (
-                <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-300">
+                <div
+                    className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
+                    onClick={closeLightbox}
+                >
                     <button
                         onClick={closeLightbox}
-                        className="absolute top-6 right-6 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors z-50"
+                        className="absolute top-4 right-4 text-white/70 hover:text-white p-2 rounded-full hover:bg-white/10 transition-colors z-50"
                     >
-                        <X size={32} />
+                        <X size={28} />
                     </button>
 
                     <button
                         onClick={prevLightboxImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 hover:scale-110 transition-all z-50 hidden md:block"
+                        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-2 md:p-4 hover:scale-110 transition-all z-50"
                     >
-                        <ChevronLeft size={48} />
+                        <ChevronLeft size={32} className="md:w-12 md:h-12" />
                     </button>
 
                     <button
                         onClick={nextLightboxImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-4 hover:scale-110 transition-all z-50 hidden md:block"
+                        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white p-2 md:p-4 hover:scale-110 transition-all z-50"
                     >
-                        <ChevronRight size={48} />
+                        <ChevronRight size={32} className="md:w-12 md:h-12" />
                     </button>
 
-                    <div className="relative w-full h-full flex flex-col items-center justify-center">
+                    <div className="w-full h-full flex flex-col items-center justify-center p-4 md:p-12" onClick={(e) => e.stopPropagation()}>
                         <img
                             src={project.images[lightboxIndex]}
                             alt={`Imagen grande ${lightboxIndex + 1}`}
-                            className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm"
+                            className="max-w-full max-h-[75vh] md:max-h-[85vh] object-contain"
                         />
-                        <div className="mt-6 text-center">
-                            <h4 className="text-white text-xl font-serif mb-1">{project.title}</h4>
+                        <div className="mt-4 text-center">
+                            <h4 className="text-white text-lg md:text-xl font-serif mb-1">{project.title}</h4>
                             <p className="text-white/50 text-xs tracking-widest uppercase">
                                 Vista {lightboxIndex + 1} de {project.images.length}
                             </p>

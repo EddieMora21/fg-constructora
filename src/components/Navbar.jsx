@@ -27,7 +27,7 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'}`}>
+        <nav className={`fixed w-full z-[90] transition-all duration-300 ${scrolled ? 'bg-white shadow-lg py-2' : 'bg-white/95 backdrop-blur-sm py-4'}`}>
             <div className="container mx-auto px-4 flex justify-between items-center">
                 {/* Logo SVG */}
                 <Link to="/" className="flex items-center group flex-shrink-0">
