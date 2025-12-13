@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Award, Clock, Handshake } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../i18n';
@@ -9,23 +10,26 @@ const Services = () => {
     const { t } = useLanguage();
 
     useEffect(() => {
-        // Stagger animations for service sections
-        const sections = document.querySelectorAll('.service-section');
-        sections.forEach((section, i) => {
-            gsap.fromTo(section,
-                { y: 50, opacity: 0 },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: section,
-                        start: "top 80%"
+        let ctx = gsap.context(() => {
+            // Stagger animations for service sections
+            const sections = document.querySelectorAll('.service-section');
+            sections.forEach((section, i) => {
+                gsap.fromTo(section,
+                    { y: 50, opacity: 0 },
+                    {
+                        y: 0,
+                        opacity: 1,
+                        duration: 1,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: section,
+                            start: "top 80%"
+                        }
                     }
-                }
-            );
+                );
+            });
         });
+        return () => ctx.revert();
     }, []);
 
     const services = [
@@ -123,27 +127,33 @@ const Services = () => {
                 ))}
             </div>
 
-            {/* Methodology Teaser */}
-            <section className="bg-white py-32 mt-20">
-                <div className="container mx-auto px-4 text-center">
-                    <h2 className="text-3xl font-serif text-brand-primary mb-12 uppercase tracking-wide">¿Por qué elegirnos?</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                        <div className="p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300 rounded-lg">
-                            <div className="text-4xl mb-4">💎</div>
-                            <h4 className="text-xl font-bold text-brand-primary mb-3">Calidad Premium</h4>
-                            <p className="text-gray-600 text-sm">Materiales de primera y acabados impecables en cada m².</p>
+            {/* Why Choose Us - Premium Dark Section */}
+            <section className="bg-brand-primary text-white py-32 mt-20 relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#BE961E 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                </div>
+
+                <div className="container mx-auto px-4 text-center relative z-10">
+                    <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">Diferenciadores</span>
+                    <h2 className="text-4xl md:text-5xl font-serif mb-16">{t.services.whyChooseUs?.title}</h2>
+
+                    {t.services.whyChooseUs?.items && (
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {t.services.whyChooseUs.items.map((item, i) => {
+                                const Icon = i === 0 ? Award : i === 1 ? Clock : Handshake;
+                                return (
+                                    <div key={i} className="group p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-500 rounded-sm hover:-translate-y-2">
+                                        <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-accent/10 text-brand-accent group-hover:scale-110 transition-transform duration-500">
+                                            <Icon className="w-8 h-8" />
+                                        </div>
+                                        <h4 className="text-2xl font-serif mb-4 text-white group-hover:text-brand-accent transition-colors">{item.title}</h4>
+                                        <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                                    </div>
+                                );
+                            })}
                         </div>
-                        <div className="p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300 rounded-lg">
-                            <div className="text-4xl mb-4">⏱️</div>
-                            <h4 className="text-xl font-bold text-brand-primary mb-3">Tiempos Exactos</h4>
-                            <p className="text-gray-600 text-sm">Cumplimiento estricto de cronogramas para tu tranquilidad.</p>
-                        </div>
-                        <div className="p-8 border border-gray-100 hover:shadow-xl transition-shadow duration-300 rounded-lg">
-                            <div className="text-4xl mb-4">🤝</div>
-                            <h4 className="text-xl font-bold text-brand-primary mb-3">Trato Personalizado</h4>
-                            <p className="text-gray-600 text-sm">Acompañamiento constante durante todo el proceso.</p>
-                        </div>
-                    </div>
+                    )}
                 </div>
             </section>
         </div>

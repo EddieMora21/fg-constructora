@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import visionImg from '../assets/about/equipo.webp';
+import logoImg from '../assets/about/Logo.webp';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../i18n';
 import { gsap } from 'gsap';
@@ -10,40 +12,64 @@ gsap.registerPlugin(ScrollTrigger);
 const About = () => {
     const { language } = useLanguage();
     const heroRef = useRef(null);
+    const teamRef = useRef(null);
 
     useEffect(() => {
-        // Animate elements on scroll
-        gsap.utils.toArray('.fade-up').forEach(el => {
-            gsap.fromTo(el,
-                { y: 60, opacity: 0 },
+        let ctx = gsap.context(() => {
+            // Animate elements on scroll
+            gsap.utils.toArray('.fade-up').forEach(el => {
+                gsap.fromTo(el,
+                    { y: 60, opacity: 0 },
+                    {
+                        y: 0, opacity: 1, duration: 1, ease: 'power3.out',
+                        scrollTrigger: { trigger: el, start: 'top 85%' }
+                    }
+                );
+            });
+
+            // Animate service cards with stagger
+            gsap.fromTo('.service-item',
+                { y: 40, opacity: 0 },
                 {
-                    y: 0, opacity: 1, duration: 1, ease: 'power3.out',
-                    scrollTrigger: { trigger: el, start: 'top 85%' }
+                    y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+                    scrollTrigger: { trigger: '.services-grid', start: 'top 80%' }
                 }
             );
-        });
 
-        // Animate service cards with stagger
-        gsap.fromTo('.service-item',
-            { y: 40, opacity: 0 },
-            {
-                y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power2.out',
-                scrollTrigger: { trigger: '.services-grid', start: 'top 80%' }
-            }
-        );
+            // Team Presentation Animation
+            // Ensure elements start hidden/positioned via JS, not CSS class
+            gsap.set(".team-card", { opacity: 0, y: 50 });
 
-        // Counter animation
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'));
-            gsap.fromTo(counter,
-                { innerText: 0 },
+            gsap.fromTo(".team-card",
+                { opacity: 0, y: 50 },
                 {
-                    innerText: target, duration: 2, ease: 'power2.out', snap: { innerText: 1 },
-                    scrollTrigger: { trigger: counter, start: 'top 90%' }
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.2, // Presentation effect
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: teamRef.current,
+                        start: "top 80%"
+                    }
                 }
             );
+
+            // Counter animation
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                gsap.fromTo(counter,
+                    { innerText: 0 },
+                    {
+                        innerText: target, duration: 2, ease: 'power2.out', snap: { innerText: 1 },
+                        scrollTrigger: { trigger: counter, start: 'top 90%' }
+                    }
+                );
+            });
         });
+
+        return () => ctx.revert();
     }, []);
 
     const content = {
@@ -79,6 +105,17 @@ const About = () => {
                     { name: 'Administración de obras', icon: ClipboardCheck },
                     { name: 'Avalúos de inmuebles', icon: Calculator },
                     { name: 'Construcción en general', icon: Building2 }
+                ]
+            },
+            team: {
+                title: 'Nuestro Equipo',
+                subtitle: 'Profesionales comprometidos con tu visión',
+                members: [
+                    { name: 'Ing. Fabian Alfaro', role: 'Director General', image: '/equipo/fabian-alfaro.webp' },
+                    { name: 'Ing. Andrés Mora', role: 'Líder Electromecánica', image: '/equipo/andres-mora.webp' },
+                    { name: 'Arq. Gilberth Sanchez', role: 'Líder de Diseño', image: '/equipo/gilberth-sanchez.webp' },
+                    { name: 'Enoc Peña', role: 'Presupuestos y Costos', image: '/equipo/enoc-pena.webp' },
+                    { name: 'Edwin Chavarria', role: 'Modelador BIM', image: '/equipo/edwin-chavarria.webp' }
                 ]
             },
             cta: '¿Listo para comenzar?'
@@ -117,6 +154,17 @@ const About = () => {
                     { name: 'General construction', icon: Building2 }
                 ]
             },
+            team: {
+                title: 'Our Team',
+                subtitle: 'Professionals committed to your vision',
+                members: [
+                    { name: 'Eng. Fabian Alfaro', role: 'CEO', image: '/equipo/fabian-alfaro.webp' },
+                    { name: 'Eng. Andrés Mora', role: 'Electromechanical Lead', image: '/equipo/andres-mora.webp' },
+                    { name: 'Arch. Gilberth Sanchez', role: 'Design Lead', image: '/equipo/gilberth-sanchez.webp' },
+                    { name: 'Enoc Peña', role: 'Budget & Costs', image: '/equipo/enoc-pena.webp' },
+                    { name: 'Edwin Chavarria', role: 'BIM Modeler', image: '/equipo/edwin-chavarria.webp' }
+                ]
+            },
             cta: 'Ready to start?'
         }
     };
@@ -149,37 +197,23 @@ const About = () => {
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent"></div>
             </section>
 
-            {/* Stats Section - Floating Cards */}
-            <section className="relative -mt-16 z-20 mb-20">
-                <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                        {Object.values(t.stats).map((stat, i) => (
-                            <div key={i} className="fade-up bg-white rounded-lg shadow-2xl p-8 text-center border-b-4 border-brand-accent transform hover:-translate-y-2 transition-transform duration-300">
-                                <div className="text-5xl md:text-6xl font-black text-brand-primary mb-2">
-                                    <span className="counter" data-target={stat.num}>{stat.num}</span>
-                                    {stat.num === 98 ? '%' : '+'}
-                                </div>
-                                <p className="text-gray-500 uppercase tracking-widest text-xs font-bold">{stat.label}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Vision Section - Split Layout */}
             <section className="py-20 container mx-auto px-4">
                 <div className="fade-up grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
                     {/* Visual Element */}
                     <div className="relative">
-                        <div className="bg-brand-light h-[400px] rounded-lg overflow-hidden relative group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-brand-accent/20"></div>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <Eye className="w-32 h-32 text-brand-primary/20 group-hover:text-brand-accent/40 transition-colors duration-500" />
-                            </div>
+                        <div className="bg-brand-light h-[400px] rounded-lg overflow-hidden relative group shadow-2xl">
+                            <img
+                                src={visionImg}
+                                alt="Visión FG Constructores"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-brand-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
                         </div>
                         {/* Floating accent box */}
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-brand-accent rounded-lg shadow-xl flex items-center justify-center">
-                            <span className="text-brand-primary font-black text-4xl">FG</span>
+                        {/* Floating accent box */}
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-lg shadow-xl flex items-center justify-center overflow-hidden p-4">
+                            <img src={logoImg} alt="FG Logo" className="w-full h-full object-contain mix-blend-multiply" />
                         </div>
                     </div>
                     {/* Text */}
@@ -229,6 +263,32 @@ const About = () => {
                                 </div>
                             );
                         })}
+                    </div>
+                </div>
+            </section>
+
+            {/* Team Section */}
+            <section ref={teamRef} className="py-24 bg-white">
+                <div className="container mx-auto px-4 fade-up">
+                    <div className="text-center mb-16">
+                        <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">{t.team.title}</span>
+                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary">{t.team.subtitle}</h2>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        {t.team.members.map((member, i) => (
+                            <div key={i} className="team-card group text-center">
+                                <div className="relative overflow-hidden rounded-lg mb-6 aspect-[3/4] max-w-sm mx-auto">
+                                    <img
+                                        src={member.image}
+                                        alt={member.name}
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 md:grayscale group-hover:grayscale-0"
+                                    />
+                                    <div className="absolute inset-0 bg-brand-primary/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                                </div>
+                                <h3 className="text-2xl font-serif text-brand-primary mb-2">{member.name}</h3>
+                                <p className="text-brand-accent font-bold uppercase text-xs tracking-widest">{member.role}</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

@@ -13,56 +13,7 @@ const Projects = () => {
         );
     }, []);
 
-    const projects = [
-        {
-            id: 1,
-            title: 'Torre Sabana',
-            cat: 'Corporativo',
-            loc: 'San José',
-            year: '2024',
-            image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'
-        },
-        {
-            id: 2,
-            title: 'Centro Escazú',
-            cat: 'Comercial',
-            loc: 'Escazú',
-            year: '2023',
-            image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop'
-        },
-        {
-            id: 3,
-            title: 'Residencial Santa Ana',
-            cat: 'Residencial',
-            loc: 'Santa Ana',
-            year: '2022',
-            image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=2070&auto=format&fit=crop'
-        },
-        {
-            id: 4,
-            title: 'Planta Industrial Heredia',
-            cat: 'Industrial',
-            loc: 'Heredia',
-            year: '2023',
-            image: 'https://images.unsplash.com/photo-1581094794329-cd1096a7a5ea?q=80&w=2068&auto=format&fit=crop'
-        },
-        {
-            id: 5,
-            title: 'Hospital Metropolitano',
-            cat: 'Hospitalario',
-            loc: 'San José',
-            year: '2021',
-            image: 'https://images.unsplash.com/photo-1587351021759-3e566b9af922?q=80&w=2070&auto=format&fit=crop'
-        },
-        {
-            id: 6,
-            title: 'Hotel Guanacaste',
-            cat: 'Comercial',
-            loc: 'Guanacaste',
-            year: '2024',
-            image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop'
-        },
-    ];
+    const projects = t.projects.projectsList || [];
 
     return (
         <div className="min-h-screen bg-white">
@@ -95,7 +46,7 @@ const Projects = () => {
                             {/* Background Image */}
                             <div
                                 className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                                style={{ backgroundImage: `url(${proj.image})` }}
+                                style={{ backgroundImage: `url(${proj.images[0]})` }}
                             ></div>
 
                             {/* Overlay Gradient */}
@@ -104,14 +55,14 @@ const Projects = () => {
                             {/* Content */}
                             <div className="absolute bottom-0 left-0 w-full p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <span className="text-brand-accent text-xs font-bold uppercase tracking-widest mb-2 block opacity-0 group-hover:opacity-100 transition-opacity delay-100 duration-300">
-                                    {proj.cat} — {proj.year}
+                                    {proj.category} — {proj.year}
                                 </span>
                                 <h3 className="text-3xl font-serif text-white mb-2">{proj.title}</h3>
-                                <p className="text-gray-300 text-sm mb-6 opacity-0 h-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-300 delay-200">
-                                    {proj.loc}
+                                <p className="text-gray-300 text-sm mb-6 opacity-100 md:opacity-0 md:h-0 md:group-hover:h-auto md:group-hover:opacity-100 transition-all duration-300 delay-200">
+                                    {proj.location}
                                 </p>
-                                <span className="inline-block text-white border-b border-brand-accent pb-1 text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity delay-300 duration-300">
-                                    Ver Proyecto →
+                                <span className="inline-block border border-white/30 bg-black/20 backdrop-blur-sm px-6 py-3 text-[10px] font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 md:translate-y-4 md:group-hover:translate-y-0 delay-300">
+                                    {t.projects?.viewProject}
                                 </span>
                             </div>
                         </Link>
