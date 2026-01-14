@@ -23,7 +23,6 @@ const Navbar = () => {
         { title: t.nav.projects, path: '/proyectos' },
         { title: t.nav.services, path: '/servicios' },
         { title: t.nav.about, path: '/nosotros' },
-        { title: t.nav.contact, path: '/contacto' },
     ];
 
     return (
@@ -62,9 +61,14 @@ const Navbar = () => {
                         {language === 'es' ? 'EN' : 'ES'}
                     </button>
 
-                    <Link to="/contacto" className="bg-brand-primary text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-brand-accent hover:text-brand-primary transition-colors duration-300 shadow-md">
+                    <a
+                        href="https://wa.me/50660674833"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-brand-primary text-white text-xs font-bold uppercase tracking-widest px-6 py-3 hover:bg-brand-accent hover:text-brand-primary transition-colors duration-300 shadow-md"
+                    >
                         {t.nav.quote}
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Mobile Menu Button */}
@@ -97,13 +101,15 @@ const Navbar = () => {
                                 {item.title}
                             </Link>
                         ))}
-                        <Link
-                            to="/contacto"
+                        <a
+                            href="https://wa.me/50660674833"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="bg-brand-primary text-white text-center py-3 font-bold uppercase tracking-widest mt-4"
                             onClick={() => setIsOpen(false)}
                         >
                             {t.nav.quote}
-                        </Link>
+                        </a>
                     </div>
                 )}
             </div>

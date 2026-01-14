@@ -35,7 +35,8 @@ const en = {
                 { name: 'Ing. Andrés Mora', role: 'Electromechanical Leader', image: '/equipo/andres-mora.webp' },
                 { name: 'Arq. Gilberth Sanchez', role: 'Design Leader', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Budgets & Costs', image: '/equipo/enoc-pena.webp' },
-                { name: 'Edwin Chavarria', role: 'BIM Modeler', image: '/equipo/edwin-chavarria.webp' }
+                { name: 'Edwin Chavarria', role: 'BIM Modeler', image: '/equipo/edwin-chavarria.webp' },
+                { name: 'Luciana Miranda', role: 'Engineering and Costs Department', image: '/equipo/luciana-miranda.webp' }
             ]
         },
         stats: {
@@ -84,7 +85,7 @@ const en = {
     projects: {
         title: 'Project Portfolio',
         subtitle: 'A selection of our most emblematic projects in Costa Rica and the region. Quality, innovation and sustainability in every square meter.',
-        filters: ['All', 'Commercial', 'Residential', 'Industrial', 'Healthcare'],
+        filters: ['All', 'Residential', 'Renders'],
         caseStudy: {
             title: 'Success Story',
             projectTitle: 'Torre Sabana: Vertical Innovation',
@@ -180,12 +181,125 @@ const en = {
                     '/src/assets/projects/residencia-barva/Bano.webp'
                 ],
                 team: ['FG Construction Team']
+            },
+            {
+                id: 50,
+                title: 'Modern A-Frame Cabin',
+                category: 'Renders',
+                location: '3D Visualization',
+                year: '2024',
+                description: 'High-realism architectural visualization.',
+                images: ['/projects/renders/cabana.png'],
+                team: ['FG Construction Team']
+            },
+            {
+                id: 51,
+                title: 'Crystal Corporate Tower',
+                category: 'Renders',
+                location: '3D Visualization',
+                year: '2024',
+                description: 'High-realism architectural visualization.',
+                images: ['/projects/renders/oficina.png'],
+                team: ['FG Construction Team']
+            },
+            {
+                id: 52,
+                title: 'Ocean View Penthouse',
+                category: 'Renders',
+                location: '3D Visualization',
+                year: '2024',
+                description: 'High-realism architectural visualization.',
+                images: ['/projects/renders/apartamento.png'],
+                team: ['FG Construction Team']
+            },
+            {
+                id: 53,
+                title: 'Residencia City View',
+                category: 'Residential',
+                location: 'Heredia',
+                year: '2025',
+                client: 'Private Project',
+                area: '350 m²',
+                duration: 'Completed 2025',
+                description: 'The project is defined as a single-family home with a contemporary language and dynamic volumetry, located on irregular terrain that is used to prioritize its corner presence. The architecture seeks a balance between visual solidity and openness to the natural surroundings. The exteriors use a sober chromatic palette in white, graphite gray, and black. The Social Area integrates a modern concept with a black quartz island, while the bathrooms stand out for wood-like cladding and high-end fixtures.',
+                challenge: 'Integrating the home into an irregular corner terrain, taking advantage of the levels to improve the architectural perspective and rainwater drainage.',
+                solution: 'The house is subtly elevated above the sidewalk level by means of grassy slopes and a concrete staircase. The design of strategic windows and balconies allows for a constant connection with the green areas, using materials such as finished concrete, tempered glass, and metal structures with efficient LED lighting.',
+                images: [
+                    '/projects/residencia-city-view/residencia-city-view-11.webp',
+                    '/projects/residencia-city-view/residencia-city-view-10.webp',
+                    '/projects/residencia-city-view/residencia-city-view-1.webp',
+                    '/projects/residencia-city-view/residencia-city-view-2.webp',
+                    '/projects/residencia-city-view/residencia-city-view-3.webp',
+                    '/projects/residencia-city-view/residencia-city-view-4.webp',
+                    '/projects/residencia-city-view/residencia-city-view-5.webp',
+                    '/projects/residencia-city-view/residencia-city-view-6.webp',
+                    '/projects/residencia-city-view/residencia-city-view-7.webp',
+                    '/projects/residencia-city-view/residencia-city-view-8.webp',
+                    '/projects/residencia-city-view/residencia-city-view-9.webp'
+                ],
+                team: ['FG Construction Team']
             }
         ],
     },
     services: {
         title: 'Comprehensive Solutions',
         subtitle: 'From conceptualization to turnkey delivery. We offer a complete range of services to materialize your vision.',
+        list: [
+            {
+                title: 'Architectural Consulting',
+                desc: 'We provide comprehensive and expert advice to define the course of your project. We analyze your needs, objectives, and site potential to optimize every space and resource from initial conceptualization, ensuring your vision is viable and functional.',
+                icon: 'Briefcase',
+                image: '/services/consultoria.png'
+            },
+            {
+                title: 'Preliminary Studies',
+                desc: 'We carry out exhaustive technical analyses including soil studies, topographic surveys, and feasibility evaluations. These studies are essential to identify potential challenges and ensure that your construction rests on a solid and safe technical foundation.',
+                icon: 'FileText',
+                image: '/services/estudios.png'
+            },
+            {
+                title: 'Architectural Design',
+                desc: 'We create innovative and avant-garde spaces that merge aesthetics with functionality. Our design process focuses on understanding your lifestyle and corporate identity to develop unique architectural proposals that exceed your expectations and improve your quality of life.',
+                icon: 'Home',
+                image: '/services/diseno.png'
+            },
+            {
+                title: 'Construction Plans',
+                desc: 'We develop detailed and precise technical documentation necessary for the impeccable execution of the work. Our plans strictly comply with all national and international regulations, ensuring that every system (structural, electrical, mechanical) is perfectly coordinated.',
+                icon: 'ClipboardCheck',
+                image: '/services/planos.png'
+            },
+            {
+                title: 'Institutional Procedures',
+                desc: 'We manage all permits and visas required before competent authorities in Costa Rica, such as CFIA, municipalities, and ministries, in an agile and professional manner. We take care of the bureaucratic process so you can move forward without legal setbacks.',
+                icon: 'FileText',
+                image: '/services/tramites.png'
+            },
+            {
+                title: 'Work Inspection',
+                desc: 'We offer constant professional technical supervision at the construction site. We verify that each phase of the project is executed strictly in accordance with approved plans and quality standards, protecting your investment through rigorous control of materials and processes.',
+                icon: 'HardHat',
+                image: '/services/inspeccion.png'
+            },
+            {
+                title: 'Works Administration',
+                desc: 'We carry out integral control of your project, managing budgets, schedules, and interaction with suppliers and subcontractors. Our focus on administrative efficiency guarantees that your work is completed on time, within the agreed budget, and with transparent management of resources.',
+                icon: 'ClipboardCheck',
+                image: '/services/administracion.png'
+            },
+            {
+                title: 'Property Appraisals',
+                desc: 'We provide accurate, technical, and professional valuations of your properties, whether land or buildings. Our appraisals are recognized by banking and commercial entities, being essential tools for financing, sales, or legal processes.',
+                icon: 'Calculator',
+                image: '/services/avalos.png'
+            },
+            {
+                title: 'General Construction',
+                desc: 'We fully execute your construction projects, from earth moving to final finishes. We have highly qualified labor, latest technology equipment, and a selection of the best materials to deliver works of superior durability and aesthetics.',
+                icon: 'Building2',
+                image: '/services/construccion.png'
+            }
+        ],
         methodology: {
             title: 'Work Methodology',
             bimTitle: 'BIM Approach (Building Information Modeling)',

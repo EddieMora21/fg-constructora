@@ -6,7 +6,6 @@ import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import Services from './pages/Services';
 import About from './pages/About';
-import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
         <Route path="proyectos/:id" element={<ProjectDetail />} />
         <Route path="servicios" element={<Services />} />
         <Route path="nosotros" element={<About />} />
-        <Route path="contacto" element={<Contact />} />
       </Route>
     </Routes>
   );

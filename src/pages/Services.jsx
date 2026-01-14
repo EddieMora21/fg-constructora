@@ -1,5 +1,18 @@
 import React, { useEffect } from 'react';
-import { Award, Clock, Handshake } from 'lucide-react';
+import {
+    Award,
+    Clock,
+    Handshake,
+    Briefcase,
+    FileText,
+    Home,
+    ClipboardCheck,
+    HardHat,
+    Calculator,
+    Building2,
+    CheckCircle2,
+    ArrowRight
+} from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useLanguage } from '../i18n';
@@ -7,13 +20,48 @@ import { useLanguage } from '../i18n';
 gsap.registerPlugin(ScrollTrigger);
 
 const Services = () => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     useEffect(() => {
         let ctx = gsap.context(() => {
-            // Stagger animations for service sections
-            const sections = document.querySelectorAll('.service-section');
-            sections.forEach((section, i) => {
+            // Animate each service row
+            gsap.utils.toArray('.service-row').forEach((row, i) => {
+                const isEven = i % 2 === 0;
+
+                // Animate image container
+                gsap.fromTo(row.querySelector('.image-container'),
+                    { x: isEven ? -100 : 100, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: row,
+                            start: "top 75%"
+                        }
+                    }
+                );
+
+                // Animate text container
+                gsap.fromTo(row.querySelector('.text-container'),
+                    { x: isEven ? 100 : -100, opacity: 0 },
+                    {
+                        x: 0,
+                        opacity: 1,
+                        duration: 1.2,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: row,
+                            start: "top 75%",
+                            delay: 0.2
+                        }
+                    }
+                );
+            });
+
+            // Generic section fade
+            gsap.utils.toArray('.animate-section').forEach((section) => {
                 gsap.fromTo(section,
                     { y: 50, opacity: 0 },
                     {
@@ -23,7 +71,7 @@ const Services = () => {
                         ease: 'power3.out',
                         scrollTrigger: {
                             trigger: section,
-                            start: "top 80%"
+                            start: "top 85%"
                         }
                     }
                 );
@@ -32,128 +80,153 @@ const Services = () => {
         return () => ctx.revert();
     }, []);
 
-    const services = [
-        {
-            num: '01',
-            title: 'Planificación Maestra',
-            desc: 'Visualizamos el futuro de ciudades y complejos. Nuestra planificación urbana integra sostenibilidad, viabilidad económica y bienestar social.',
-            image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?q=80&w=2144&auto=format&fit=crop',
-            items: ['Estudios de Factibilidad', 'Masterplans Urbanos', 'Desarrollo Turístico']
-        },
-        {
-            num: '02',
-            title: 'Diseño Arquitectónico',
-            desc: 'Fusionamos arte y ciencia para crear espacios que inspiran. Cada línea y cada volumen responde a un propósito estética y funcional.',
-            image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031&auto=format&fit=crop',
-            items: ['Diseño Conceptual', 'Planos Ejecutivos', 'BIM & Modelado 3D']
-        },
-        {
-            num: '03',
-            title: 'Ingeniería & Construcción',
-            desc: 'Ejecución impecable con estándares internacionales. Gestionamos obras complejas garantizando tiempos, costos y calidad superior.',
-            image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop',
-            items: ['Dirección de Obra', 'Ingeniería Estructural', 'Gestión Llave en Mano']
-        },
-        {
-            num: '04',
-            title: 'Consultoría Sostenible',
-            desc: 'Comprometidos con el planeta. Asesoramos en certificaciones LEED y optimización energética para edificios de alto rendimiento.',
-            image: 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=2069&auto=format&fit=crop',
-            items: ['Certificación LEED/EDGE', 'Simulación Energética', 'Auditorías Ambientales']
-        }
-    ];
+    const iconMap = {
+        'Briefcase': Briefcase,
+        'FileText': FileText,
+        'Home': Home,
+        'ClipboardCheck': ClipboardCheck,
+        'HardHat': HardHat,
+        'Calculator': Calculator,
+        'Building2': Building2,
+        'Award': Award,
+        'Clock': Clock,
+        'Handshake': Handshake
+    };
+
+    const servicesList = t.services.list || [];
 
     return (
-        <div className="min-h-screen bg-brand-light">
-            {/* Header Section */}
-            <section className="bg-brand-primary text-white py-32 relative overflow-hidden">
-                <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-accent via-brand-primary to-transparent"></div>
-                <div className="container mx-auto px-4 text-center relative z-10">
+        <div className="min-h-screen bg-white">
+            {/* Header - More Visual */}
+            <section className="bg-brand-primary text-white pt-40 pb-32 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20">
+                    <img
+                        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+                        alt="Background"
+                        className="w-full h-full object-cover"
+                    />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-primary via-brand-primary/80 to-transparent"></div>
+
+                <div className="container mx-auto px-4 relative z-10 text-center">
+                    <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">Nuestras Capacidades</span>
                     <h1 className="text-5xl md:text-7xl font-serif mb-8 tracking-tight">{t.services.title}</h1>
-                    <p className="text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                    <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
                         {t.services.subtitle}
                     </p>
                 </div>
             </section>
 
-            {/* Services List - Large Format */}
-            <div className="container mx-auto px-4 py-24 space-y-32">
-                {services.map((service, i) => (
-                    <div
-                        key={i}
-                        className={`service-section flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}
-                    >
-                        {/* Image Side */}
-                        <div className="w-full lg:w-1/2 relative group">
-                            <div className="overflow-hidden rounded-lg shadow-2xl relative h-[500px]">
-                                <img
-                                    src={service.image}
-                                    alt={service.title}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                />
-                                <div className="absolute inset-0 bg-brand-primary/20 group-hover:bg-transparent transition-colors duration-500"></div>
+            {/* Alternating Services Rows - Large Format */}
+            <section className="py-24 lg:py-40 space-y-32 lg:space-y-56 overflow-hidden">
+                {servicesList.map((service, i) => {
+                    const Icon = iconMap[service.icon] || CheckCircle2;
+                    const isEven = i % 2 === 0;
+
+                    return (
+                        <div
+                            key={i}
+                            className={`service-row container mx-auto px-4 flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-16 lg:gap-24`}
+                        >
+                            {/* Image Container */}
+                            <div className="image-container w-full lg:w-1/2 relative group">
+                                <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl h-[400px] lg:h-[600px]">
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                    />
+                                    <div className="absolute inset-0 bg-brand-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                </div>
+                                {/* Decorative elements */}
+                                <div className={`absolute -bottom-6 -right-6 lg:-bottom-10 lg:-right-10 w-40 h-40 border-8 border-brand-accent opacity-20 -z-10 rounded-2xl ${!isEven && 'right-auto -left-6 lg:-left-10'}`}></div>
+                                <div className={`absolute top-1/2 -translate-y-1/2 ${isEven ? '-left-8' : '-right-8'} w-16 h-32 bg-brand-accent/10 rounded-full blur-2xl -z-10`}></div>
                             </div>
-                            {/* Decorative Box */}
-                            <div className={`hidden lg:block absolute -bottom-10 -right-10 w-40 h-40 border-4 border-brand-accent z-0 ${i % 2 !== 0 ? 'right-auto -left-10' : ''}`}></div>
-                        </div>
 
-                        {/* Content Side */}
-                        <div className="w-full lg:w-1/2">
-                            <span className="text-6xl text-gray-200 font-serif font-bold absolute -translate-y-12 -z-10 select-none">
-                                {service.num}
-                            </span>
-                            <h3 className="text-4xl font-serif text-brand-primary mb-6 relative">
-                                {service.title}
-                                <span className="block h-1 w-20 bg-brand-accent mt-4"></span>
-                            </h3>
-                            <p className="text-gray-600 text-lg leading-relaxed mb-10">
-                                {service.desc}
-                            </p>
-
-                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-                                {service.items.map((item, idx) => (
-                                    <li key={idx} className="flex items-center text-gray-700 font-medium">
-                                        <span className="w-2 h-2 rounded-full bg-brand-accent mr-3"></span>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <button className="px-8 py-4 bg-transparent border-2 border-brand-primary text-brand-primary font-bold text-xs uppercase tracking-[2px] transition-all hover:bg-brand-primary hover:text-white">
-                                Más Información
-                            </button>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* Why Choose Us - Premium Dark Section */}
-            <section className="bg-brand-primary text-white py-32 mt-20 relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#BE961E 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-                </div>
-
-                <div className="container mx-auto px-4 text-center relative z-10">
-                    <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">Diferenciadores</span>
-                    <h2 className="text-4xl md:text-5xl font-serif mb-16">{t.services.whyChooseUs?.title}</h2>
-
-                    {t.services.whyChooseUs?.items && (
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {t.services.whyChooseUs.items.map((item, i) => {
-                                const Icon = i === 0 ? Award : i === 1 ? Clock : Handshake;
-                                return (
-                                    <div key={i} className="group p-10 border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-500 rounded-sm hover:-translate-y-2">
-                                        <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-accent/10 text-brand-accent group-hover:scale-110 transition-transform duration-500">
-                                            <Icon className="w-8 h-8" />
+                            {/* Text Container */}
+                            <div className="text-container w-full lg:w-1/2 space-y-8">
+                                <span className="text-6xl lg:text-8xl text-gray-100 font-serif font-bold select-none leading-none">
+                                    0{i + 1}
+                                </span>
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-12 rounded-lg bg-brand-light flex items-center justify-center text-brand-primary">
+                                            <Icon className="w-6 h-6" />
                                         </div>
-                                        <h4 className="text-2xl font-serif mb-4 text-white group-hover:text-brand-accent transition-colors">{item.title}</h4>
-                                        <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                                        <h2 className="text-3xl lg:text-5xl font-serif text-brand-primary leading-tight">
+                                            {service.title}
+                                        </h2>
                                     </div>
-                                );
-                            })}
+                                    <div className="w-20 h-1.5 bg-brand-accent rounded-full"></div>
+                                    <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light">
+                                        {service.desc}
+                                    </p>
+                                    <div className="pt-6">
+                                        <a
+                                            href={`https://wa.me/50660674833?text=Hola FG Constructores, me gustaría más información sobre el servicio de: ${service.title}`}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group inline-flex items-center gap-4 bg-brand-primary text-white border-2 border-brand-primary px-8 py-4 text-xs font-bold uppercase tracking-[3px] hover:bg-transparent hover:text-brand-primary transition-all duration-300 shadow-xl"
+                                        >
+                                            Consultar por WhatsApp
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    )}
+                    );
+                })}
+            </section>
+
+            {/* Why Choose Us - Enhanced Visual Impact */}
+            <section className="bg-brand-primary text-white py-32 relative overflow-hidden animate-section">
+                <div className="absolute inset-0 opacity-10">
+                    <img
+                        src="https://images.unsplash.com/photo-1517089591964-9997858a9f7c?q=80&w=2030&auto=format&fit=crop"
+                        alt="Background Pattern"
+                        className="w-full h-full object-cover grayscale"
+                    />
+                </div>
+                <div className="absolute inset-0 bg-brand-primary/90"></div>
+
+                <div className="container mx-auto px-4 relative z-10 text-center">
+                    <h2 className="text-4xl lg:text-6xl font-serif mb-24 max-w-4xl mx-auto">
+                        {t.services.whyChooseUs?.title}
+                    </h2>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-6xl mx-auto">
+                        {t.services.whyChooseUs?.items.map((item, i) => {
+                            const Icon = iconMap[item.icon] || Award;
+                            return (
+                                <div key={i} className="group relative">
+                                    <div className="mb-10 mx-auto w-20 h-20 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-accent group-hover:bg-brand-accent group-hover:text-brand-primary transition-all duration-500 transform group-hover:-translate-y-2">
+                                        <Icon className="w-10 h-10" />
+                                    </div>
+                                    <h4 className="text-2xl font-serif mb-6">{item.title}</h4>
+                                    <p className="text-gray-400 font-light leading-relaxed">{item.desc}</p>
+                                    <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-0 h-1 bg-brand-accent group-hover:w-full transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            {/* Global CTA */}
+            <section className="py-32 lg:py-48 bg-gray-50 text-center animate-section">
+                <div className="container mx-auto px-4 max-w-3xl">
+                    <h2 className="text-4xl lg:text-6xl font-serif text-brand-primary mb-12 leading-tight">
+                        {language === 'es' ? 'Construyamos juntos' : 'Let us build together'}
+                    </h2>
+                    <a
+                        href="https://wa.me/50660674833"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-brand-accent text-brand-primary border-2 border-brand-accent px-16 py-6 text-sm font-bold uppercase tracking-[4px] hover:bg-transparent transition-all duration-300 shadow-2xl transform hover:-translate-y-2"
+                    >
+                        {language === 'es' ? 'Iniciar Conversación' : 'Start Conversation'}
+                    </a>
                 </div>
             </section>
         </div>

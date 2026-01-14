@@ -37,9 +37,9 @@ const Footer = () => {
                 <div className="footer-col">
                     <h4 className="font-sans text-xs font-bold uppercase tracking-widest mb-6 text-brand-accent">{t.footer.contactTitle}</h4>
                     <ul>
-                        <li className="mb-3"><Link to="/contacto" className="text-gray-400 hover:text-white transition-colors">info@fgingenieros.cr</Link></li>
-                        <li className="mb-3"><Link to="/contacto" className="text-gray-400 hover:text-white transition-colors">+506 2222 0000</Link></li>
-                        <li className="mb-3"><Link to="/contacto" className="text-gray-400 hover:text-white transition-colors">San José, Costa Rica</Link></li>
+                        <li className="mb-3"><a href="mailto:info@fg.co.cr" className="text-gray-400 hover:text-white transition-colors">info@fg.co.cr</a></li>
+                        <li className="mb-3"><a href="https://wa.me/50660674833" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">+506 60674833</a></li>
+                        <li className="mb-3 text-gray-400">San José, Costa Rica</li>
                     </ul>
                 </div>
             </div>

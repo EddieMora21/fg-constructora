@@ -309,9 +309,14 @@ const Home = () => {
             <section className="py-24 text-center container mx-auto px-4 reveal-on-scroll">
                 <h2 className="text-4xl md:text-5xl font-serif mb-6 text-brand-primary">{t.home.cta.title}</h2>
                 <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto">{t.home.cta.subtitle}</p>
-                <Link to="/contacto" className="inline-block bg-brand-accent text-brand-primary px-10 py-4 text-xs font-bold uppercase tracking-[3px] hover:bg-brand-primary hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                <a
+                    href="https://wa.me/50660674833"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block bg-brand-accent text-brand-primary px-10 py-4 text-xs font-bold uppercase tracking-[3px] hover:bg-brand-primary hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg"
+                >
                     {t.home.cta.button}
-                </Link>
+                </a>
             </section>
         </>
     );
