@@ -99,9 +99,6 @@ const ProjectDetail = () => {
     }, [isLightboxOpen, project.images.length]);
 
     useLayoutEffect(() => {
-        // Reset scroll to top on route change
-        window.scrollTo(0, 0);
-
         let ctx = gsap.context(() => {
 
             // 1. HERO: Staggered Text Reveal
@@ -213,7 +210,7 @@ const ProjectDetail = () => {
     };
 
     return (
-        <div ref={containerRef} className="bg-white min-h-screen font-sans selection:bg-brand-primary selection:text-white overflow-x-hidden">
+        <div ref={containerRef} className="bg-white dark:bg-night min-h-screen font-sans selection:bg-brand-primary selection:text-white overflow-x-hidden transition-colors duration-500">
 
             {/* --- HERO SECTION --- */}
             <header className="hero-section relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
@@ -266,32 +263,32 @@ const ProjectDetail = () => {
                     </div>
 
                     {/* Scrolling Narrative (Right) */}
-                    <div className="scrolly-content bg-white relative z-10">
+                    <div className="scrolly-content bg-white dark:bg-night relative z-10">
 
                         {/* 01. INTRO / DESCRIPTION */}
-                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24 border-b border-gray-100">
+                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
                             {/* Mobile Image 1 */}
                             <img src={scrollyImages[0]} alt="Visión del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
 
                             <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">01. La Visión</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
                                 {project.description.split('.')[0]}.
                             </h2>
-                            <p className="text-gray-500 text-lg leading-relaxed font-light">
+                            <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed font-light">
                                 {project.description.substring(project.description.split('.')[0].length + 1)}
                             </p>
                         </div>
 
                         {/* 02. CHALLENGE */}
-                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24 border-b border-gray-100 bg-gray-50/50">
+                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
                             {/* Mobile Image 2 */}
                             <img src={scrollyImages[1]} alt="Desafío del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
 
                             <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">02. El Desafío</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
                                 Superando los estándares convencionales.
                             </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed font-light">
+                            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
                                 {project.challenge}
                             </p>
                         </div>
@@ -302,28 +299,24 @@ const ProjectDetail = () => {
                             <img src={scrollyImages[2]} alt="Solución del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
 
                             <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">03. La Solución</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
                                 Ingeniería y arte en perfecta armonía.
                             </h2>
-                            <p className="text-gray-600 text-lg leading-relaxed font-light">
+                            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
                                 {project.solution}
                             </p>
 
                             {/* Project Stats Summary */}
-                            <div className="grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-gray-200">
+                            <div className="grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
                                 <div>
-                                    <h4 className="text-gray-400 text-[10px] uppercase tracking-widest mb-3">Cliente</h4>
-                                    <p className="font-serif text-xl text-brand-primary">{project.client}</p>
-                                </div>
-                                <div>
-                                    <h4 className="text-gray-400 text-[10px] uppercase tracking-widest mb-3">Duración</h4>
-                                    <p className="font-serif text-xl text-brand-primary">{project.duration}</p>
+                                    <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Duración</h4>
+                                    <p className="font-serif text-xl text-brand-primary dark:text-brand-accent">{project.duration}</p>
                                 </div>
                                 <div className="col-span-2">
-                                    <h4 className="text-gray-400 text-[10px] uppercase tracking-widest mb-3">Equipo</h4>
+                                    <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Equipo</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {project.team.map((m, i) => (
-                                            <span key={i} className="inline-block px-3 py-1 bg-gray-100 text-xs tracking-wider text-gray-600 rounded-full">{m}</span>
+                                            <span key={i} className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs tracking-wider text-gray-600 dark:text-gray-400 rounded-full">{m}</span>
                                         ))}
                                     </div>
                                 </div>
@@ -335,7 +328,7 @@ const ProjectDetail = () => {
             </section>
 
             {/* --- HORIZONTAL GALLERY --- */}
-            <section className={`gallery-wrapper relative bg-brand-primary text-white overflow-hidden ${isLightboxOpen ? 'invisible' : ''}`}>
+            <section className={`gallery-wrapper relative bg-brand-primary dark:bg-night text-white overflow-hidden ${isLightboxOpen ? 'invisible' : ''}`}>
                 <div className="pt-20 pb-8 md:pt-28 px-8 md:px-16">
                     <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
                     <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">

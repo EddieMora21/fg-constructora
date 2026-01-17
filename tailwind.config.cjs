@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
     content: [
         "./index.html",
@@ -8,13 +7,16 @@ module.exports = {
         extend: {
             colors: {
                 brand: {
-                    primary: '#0B215E', // Deep Royal Blue (Inferred from FG logo style)
-                    secondary: '#333333', // Dark Text
-                    accent: '#D4AF37', // Metallic Gold (Classic construction accent)
-                    light: '#F5F7FA', // Light Gray/Blueish background
-                    medium: '#E2E8F0', // Borders
-                    dark: '#020C27', // Very dark blue for footer/headings
-                }
+                    primary: '#0B215E',
+                    secondary: '#333333',
+                    accent: '#D4AF37',
+                    light: '#F5F7FA',
+                    medium: '#E2E8F0',
+                    dark: '#020C27',
+                },
+                'bg-dark': '#000A1A',
+                'text-dark': '#F5F7FA',
+                'card-dark': '#001533',
             },
             fontFamily: {
                 sans: ['Inter', 'sans-serif'],

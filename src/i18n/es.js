@@ -9,8 +9,8 @@ const es = {
         quote: 'Contactar',
     },
     hero: {
-        title: 'Diseñamos y Construimos tu Visión',
-        subtitle: 'Expertos en arquitectura e ingeniería en Costa Rica. Contáctanos por WhatsApp y platiquemos sobre tu próximo proyecto.',
+        title: 'Estructura, función y estética en cada proyecto',
+        subtitle: 'Materializamos su visión mediante la integración de ingeniería de precisión y diseño de vanguardia. Iniciemos hoy la conversación sobre su próximo gran proyecto.',
         cta1: 'Ver Proyectos',
         cta2: 'Contáctanos Ahora',
     },
@@ -36,7 +36,7 @@ const es = {
                 { name: 'Arq. Gilberth Sanchez', role: 'Líder de Diseño', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Presupuestos y Costos', image: '/equipo/enoc-pena.webp' },
                 { name: 'Edwin Chavarria', role: 'Modelador BIM', image: '/equipo/edwin-chavarria.webp' },
-                { name: 'Luciana Miranda', role: 'Departamento de Ingeniería y Costos', image: '/equipo/luciana-miranda.webp' }
+                { name: 'Luciana Miranda', role: 'Departamento de ingeniería de costos y logística', image: '/equipo/luciana-miranda.webp' }
             ]
         },
         stats: {
@@ -85,7 +85,7 @@ const es = {
     projects: {
         title: 'Portafolio de Obras',
         subtitle: 'Una selección de nuestros proyectos más emblemáticos en Costa Rica y la región. Calidad, innovación y sostenibilidad en cada metro cuadrado.',
-        filters: ['Todos', 'Residencial', 'Renders'],
+        filters: ['Construidos', 'Diseñados'],
         caseStudy: {
             title: 'Caso de Éxito',
             projectTitle: 'Torre Sabana: Innovación Vertical',
@@ -99,10 +99,9 @@ const es = {
             {
                 id: 1,
                 title: 'Casa Corteza',
-                category: 'Residencial',
-                location: 'Costa Rica',
+                category: 'Construidos',
+                location: 'Grecia, Alajuela',
                 year: '2023',
-                client: 'Proyecto Privado',
                 area: 'N/A',
                 duration: '17 semanas (Mayo - Septiembre 2023)',
                 description: 'Concepto Arquitectónico Central: "Contraste Cálido y Funcional". El proyecto se basa en la combinación estratégica de líneas limpias, materiales contrastantes y una optimización de la luz natural y artificial. El diseño exterior e interior busca un equilibrio entre la estética contemporánea y la calidez del hogar. Este proyecto es un excelente ejemplo de la aplicación de principios de diseño moderno residencial en el que se fusiona la funcionalidad (ventanas amplias, espacios abiertos) con una estética cuidada (juego de materiales y acentos de color/textura).',
@@ -130,10 +129,9 @@ const es = {
             {
                 id: 2,
                 title: 'Colinas del Poro',
-                category: 'Residencial',
+                category: 'Construidos',
                 location: 'Grecia, Alajuela',
                 year: '2023',
-                client: 'Proyecto Privado',
                 area: 'N/A',
                 duration: '5 meses (Julio - Noviembre 2023)',
                 description: 'Este proyecto se enmarca claramente dentro de un estilo moderno y minimalista, con un fuerte enfoque en las líneas limpias, el contraste y la funcionalidad. El diseño exterior es de volúmenes puros y geometría marcada, característico de la arquitectura moderna. Se utiliza una composición de volúmenes rectangulares que se yuxtaponen. El diseño es de dos niveles y destaca el uso de techos planos (o inclinados con un mínimo pendiente), lo que refuerza la estética contemporánea y minimalista. La paleta de colores es neutra y de alto contraste. Predominan los tonos gris, blanco y negro, creando un impacto visual fuerte.',
@@ -160,10 +158,9 @@ const es = {
             {
                 id: 3,
                 title: 'Residencia D Barva',
-                category: 'Residencial',
+                category: 'Construidos',
                 location: 'Barva, Heredia',
                 year: '2024',
-                client: 'Proyecto Privado',
                 area: 'N/A',
                 duration: 'Finalización Enero 2024',
                 description: 'Arquitectura Moderna con Influencia Industrial y Toques Minimalistas. El diseño se alinea con la arquitectura moderna y contemporánea: Volúmenes Geométricos Puros con formas rectangulares y cúbicas limpias, minimizando las ornamentaciones. Grandes Aberturas Acorazadas con ventanales de piso a techo que maximizan la entrada de luz natural y borran el límite entre el interior y el exterior. Paleta de Colores Neutros con tonos grises y blancos rotos, con el azul profundo como color de acento, creando un contraste audaz pero elegante. Interiores de Doble Altura que aumentan la sensación de amplitud y luminosidad.',
@@ -185,7 +182,7 @@ const es = {
             {
                 id: 50,
                 title: 'Cabaña A-Frame Moderna',
-                category: 'Renders',
+                category: 'Diseñados',
                 location: 'Visualización 3D',
                 year: '2024',
                 description: 'Visualización arquitectónica de alto realismo.',
@@ -195,7 +192,7 @@ const es = {
             {
                 id: 51,
                 title: 'Torre Corporativa Crystal',
-                category: 'Renders',
+                category: 'Diseñados',
                 location: 'Visualización 3D',
                 year: '2024',
                 description: 'Visualización arquitectónica de alto realismo.',
@@ -205,7 +202,7 @@ const es = {
             {
                 id: 52,
                 title: 'Penthouse Ocean View',
-                category: 'Renders',
+                category: 'Diseñados',
                 location: 'Visualización 3D',
                 year: '2024',
                 description: 'Visualización arquitectónica de alto realismo.',
@@ -215,10 +212,9 @@ const es = {
             {
                 id: 53,
                 title: 'Residencia City View',
-                category: 'Residencial',
-                location: 'Heredia',
-                year: '2025',
-                client: 'Proyecto Privado',
+                category: 'Construidos',
+                location: 'Escazú',
+                year: '2020',
                 area: '350 m²',
                 duration: 'Finalizado 2025',
                 description: 'El proyecto se define como una vivienda unifamiliar de lenguaje contemporáneo y volumetría dinámica, ubicada en un terreno de topografía irregular que se aprovecha para jerarquizar su presencia en esquina. La arquitectura busca un equilibrio entre la solidez visual y la apertura hacia el entorno natural. Los exteriores emplean una paleta cromática sobria en tonos blanco, gris grafito y negro. El Área Social integra un concepto moderno con isla de cuarzo negro, mientras que los baños destacan por revestimientos tipo madera y grifería de alta gama.',

@@ -17,12 +17,10 @@ const Projects = () => {
     const allProjects = t.projects.projectsList || [];
     const filters = t.projects.filters || [];
 
-    const filteredProjects = activeFilter === 0
-        ? allProjects
-        : allProjects.filter(proj => proj.category === filters[activeFilter]);
+    const filteredProjects = allProjects.filter(proj => proj.category === filters[activeFilter]);
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white dark:bg-night transition-colors duration-500">
             <section className="bg-brand-primary py-32 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                 <div className="container mx-auto px-4 text-center relative z-10">
@@ -38,7 +36,7 @@ const Projects = () => {
                         <button
                             key={i}
                             onClick={() => setActiveFilter(i)}
-                            className={`text-sm tracking-[2px] uppercase font-bold transition-all duration-300 ${activeFilter === i ? 'text-brand-primary border-b-2 border-brand-accent pb-1' : 'text-gray-400 hover:text-brand-primary'}`}
+                            className={`text-sm tracking-[2px] uppercase font-bold transition-all duration-300 ${activeFilter === i ? 'text-brand-primary dark:text-brand-accent border-b-2 border-brand-accent pb-1' : 'text-gray-400 dark:text-gray-500 hover:text-brand-primary dark:hover:text-brand-accent'}`}
                         >
                             {filter}
                         </button>
@@ -48,7 +46,7 @@ const Projects = () => {
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     {filteredProjects.map((proj) => {
-                        const isRender = proj.category === 'Renders';
+                        const isRender = proj.category === 'Diseñados' || proj.category === 'Designed';
                         const CardComponent = isRender ? 'div' : Link;
                         const cardProps = isRender ? { key: proj.id } : { to: `/proyectos/${proj.id}`, key: proj.id };
 

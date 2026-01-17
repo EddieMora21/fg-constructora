@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode in Tailwind 4 - Moved before theme variables */
+@variant dark (&:where(.dark, .dark *));
+
 /* Brand Colors - FG Constructores */
 @theme {
   --color-brand-primary: #001E55;
@@ -8,6 +11,11 @@
   --color-brand-light: #F5F7FA;
   --color-brand-medium: #E2E8F0;
   --color-brand-dark: #001533;
+
+  /* Dark Mode Specifics - Simplified names */
+  --color-night: #000A1A;
+  --color-night-card: #001533;
+  --color-night-text: #F5F7FA;
 }
 
 /* Custom Scrollbar */

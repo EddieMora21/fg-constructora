@@ -9,8 +9,8 @@ const en = {
         quote: 'Get Quote',
     },
     hero: {
-        title: 'Building tomorrow, today.',
-        subtitle: 'Leaders in sustainable architecture and engineering in Costa Rica. We transform visions into tangible structures with precision and elegance.',
+        title: 'Structure, function and aesthetics in every project',
+        subtitle: 'We materialize your vision through the integration of precision engineering and avant-garde design. Let’s start the conversation about your next great project today.',
         cta1: 'View Portfolio',
         cta2: 'Request Quote',
     },
@@ -36,7 +36,7 @@ const en = {
                 { name: 'Arq. Gilberth Sanchez', role: 'Design Leader', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Budgets & Costs', image: '/equipo/enoc-pena.webp' },
                 { name: 'Edwin Chavarria', role: 'BIM Modeler', image: '/equipo/edwin-chavarria.webp' },
-                { name: 'Luciana Miranda', role: 'Engineering and Costs Department', image: '/equipo/luciana-miranda.webp' }
+                { name: 'Luciana Miranda', role: 'Engineering Costs and Logistics Department', image: '/equipo/luciana-miranda.webp' }
             ]
         },
         stats: {
@@ -85,7 +85,7 @@ const en = {
     projects: {
         title: 'Project Portfolio',
         subtitle: 'A selection of our most emblematic projects in Costa Rica and the region. Quality, innovation and sustainability in every square meter.',
-        filters: ['All', 'Residential', 'Renders'],
+        filters: ['Built', 'Designed'],
         caseStudy: {
             title: 'Success Story',
             projectTitle: 'Torre Sabana: Vertical Innovation',
@@ -99,10 +99,9 @@ const en = {
             {
                 id: 1,
                 title: 'Casa Corteza',
-                category: 'Residential',
-                location: 'Costa Rica',
+                category: 'Built',
+                location: 'Grecia, Alajuela',
                 year: '2023',
-                client: 'Private Project',
                 area: 'N/A',
                 duration: '17 weeks (May - September 2023)',
                 description: 'Central Architectural Concept: "Warm and Functional Contrast". The project is based on the strategic combination of clean lines, contrasting materials, and an optimization of natural and artificial light. The exterior and interior design seeks a balance between contemporary aesthetics and the warmth of home. This project is an excellent example of the application of modern residential design principles where functionality (wide windows, open spaces) merges with a careful aesthetic (play of materials and color/texture accents).',
@@ -130,10 +129,9 @@ const en = {
             {
                 id: 2,
                 title: 'Colinas del Poro',
-                category: 'Residential',
+                category: 'Built',
                 location: 'Grecia, Alajuela',
                 year: '2023',
-                client: 'Private Project',
                 area: 'N/A',
                 duration: '5 months (July - November 2023)',
                 description: 'This project falls clearly within a modern and minimalist style, with a strong focus on clean lines, contrast, and functionality. The exterior design features pure volumes and marked geometry, characteristic of modern architecture. A composition of rectangular volumes is used in juxtaposition. The design is two-level and highlights the use of flat roofs (or pitched with minimal slope), reinforcing the contemporary and minimalist aesthetic. The color palette is neutral and high contrast. Gray, white, and black tones predominate, creating a strong visual impact.',
@@ -160,10 +158,9 @@ const en = {
             {
                 id: 3,
                 title: 'Residencia D Barva',
-                category: 'Residential',
+                category: 'Built',
                 location: 'Barva, Heredia',
                 year: '2024',
-                client: 'Private Project',
                 area: 'N/A',
                 duration: 'Completion January 2024',
                 description: 'Modern Architecture with Industrial Influence and Minimalist Touches. The design aligns with modern and contemporary architecture: Pure Geometric Volumes with clean rectangular and cubic forms, minimizing ornamentation. Large Armored Openings with floor-to-ceiling windows maximizing natural light entry and blurring the boundary between interior and exterior. Neutral Color Palette with gray and off-white tones, with deep blue as an accent color, creating a bold but elegant contrast. Double Height Interiors increasing the sensation of spaciousness and brightness.',
@@ -185,7 +182,7 @@ const en = {
             {
                 id: 50,
                 title: 'Modern A-Frame Cabin',
-                category: 'Renders',
+                category: 'Designed',
                 location: '3D Visualization',
                 year: '2024',
                 description: 'High-realism architectural visualization.',
@@ -195,7 +192,7 @@ const en = {
             {
                 id: 51,
                 title: 'Crystal Corporate Tower',
-                category: 'Renders',
+                category: 'Designed',
                 location: '3D Visualization',
                 year: '2024',
                 description: 'High-realism architectural visualization.',
@@ -205,7 +202,7 @@ const en = {
             {
                 id: 52,
                 title: 'Ocean View Penthouse',
-                category: 'Renders',
+                category: 'Designed',
                 location: '3D Visualization',
                 year: '2024',
                 description: 'High-realism architectural visualization.',
@@ -215,10 +212,9 @@ const en = {
             {
                 id: 53,
                 title: 'Residencia City View',
-                category: 'Residential',
-                location: 'Heredia',
-                year: '2025',
-                client: 'Private Project',
+                category: 'Built',
+                location: 'Escazú',
+                year: '2020',
                 area: '350 m²',
                 duration: 'Completed 2025',
                 description: 'The project is defined as a single-family home with a contemporary language and dynamic volumetry, located on irregular terrain that is used to prioritize its corner presence. The architecture seeks a balance between visual solidity and openness to the natural surroundings. The exteriors use a sober chromatic palette in white, graphite gray, and black. The Social Area integrates a modern concept with a black quartz island, while the bathrooms stand out for wood-like cladding and high-end fixtures.',

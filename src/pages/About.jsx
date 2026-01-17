@@ -78,7 +78,7 @@ const About = () => {
     const team = t.home.team || { members: [] };
 
     return (
-        <div className="min-h-screen overflow-hidden bg-white">
+        <div className="min-h-screen overflow-hidden bg-white dark:bg-night transition-colors duration-500">
             {/* Hero */}
             <section
                 ref={heroRef}
@@ -114,62 +114,38 @@ const About = () => {
                             />
                             <div className="absolute inset-0 bg-brand-primary/10 group-hover:bg-transparent transition-colors duration-500"></div>
                         </div>
-                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white rounded-lg shadow-xl flex items-center justify-center overflow-hidden p-4">
-                            <img src={logoImg} alt="FG Logo" className="w-full h-full object-contain mix-blend-multiply" />
+                        <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-white dark:bg-night rounded-lg shadow-xl flex items-center justify-center overflow-hidden p-4">
+                            <img src={logoImg} alt="FG Logo" className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal" />
                         </div>
                     </div>
                     <div>
                         <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">Visión</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary mb-8 leading-tight">Excelencia y Sostenibilidad</h2>
-                        <p className="text-gray-600 text-lg leading-relaxed mb-6">{t.home.intro.vision}</p>
+                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary dark:text-white mb-8 leading-tight">Excelencia y Sostenibilidad</h2>
+                        <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6">{t.home.intro.vision}</p>
                         <div className="w-20 h-1 bg-brand-accent"></div>
                     </div>
                 </div>
             </section>
 
             {/* Client Focus */}
-            <section className="bg-brand-primary py-24 relative overflow-hidden">
+            <section className="bg-brand-primary py-12 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-5">
                     <div className="absolute inset-0" style={{ backgroundImage: 'repeating-linear-gradient(45deg, #BE961E 0, #BE961E 1px, transparent 0, transparent 50%)', backgroundSize: '30px 30px' }}></div>
                 </div>
                 <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
-                    <Users className="w-16 h-16 text-brand-accent mx-auto mb-8" />
-                    <h2 className="text-4xl md:text-5xl font-serif text-white mb-10 leading-tight">El Cliente es Nuestra Razón de Ser</h2>
+                    <Users className="w-12 h-12 text-brand-accent mx-auto mb-4" />
+                    <h2 className="text-3xl md:text-4xl font-serif text-white mb-6 leading-tight">El Cliente es Nuestra Razón de Ser</h2>
                     <p className="text-xl text-gray-300 leading-relaxed">{t.home.intro.cliente}</p>
                 </div>
             </section>
 
-            {/* Services Section - Consuming from i18n */}
-            <section className="py-24 bg-brand-light">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-16 fade-up">
-                        <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">Lo que hacemos</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary">{t.services.title}</h2>
-                    </div>
-                    <div className="services-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                        {(t.services.list || []).map((service, i) => {
-                            const IconComponent = iconMap[service.icon] || CheckCircle2;
-                            return (
-                                <div key={i} className="service-item group bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 border-l-4 border-transparent hover:border-brand-accent cursor-pointer h-full">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-14 h-14 rounded-full bg-brand-light flex items-center justify-center group-hover:bg-brand-accent transition-colors duration-300 flex-shrink-0">
-                                            <IconComponent className="w-6 h-6 text-brand-primary group-hover:text-brand-primary transition-colors duration-300" />
-                                        </div>
-                                        <span className="text-brand-primary font-bold text-lg group-hover:text-brand-primary transition-colors">{service.title}</span>
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-                </div>
-            </section>
 
             {/* Team Section */}
-            <section ref={teamRef} className="py-24 bg-white">
+            <section ref={teamRef} className="py-24 bg-white dark:bg-night">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16 fade-up">
                         <span className="text-brand-accent font-bold uppercase tracking-[4px] text-sm mb-4 block">{t.home.team.title}</span>
-                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary">{t.home.team.subtitle}</h2>
+                        <h2 className="text-4xl md:text-5xl font-serif text-brand-primary dark:text-white">{t.home.team.subtitle}</h2>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                         {team.members.map((member, i) => (
@@ -178,11 +154,11 @@ const About = () => {
                                     <img
                                         src={member.image}
                                         alt={member.name}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 md:grayscale group-hover:grayscale-0"
+                                        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 md:grayscale group-hover:grayscale-0"
                                     />
                                     <div className="absolute inset-0 bg-brand-primary/20 group-hover:bg-transparent transition-colors duration-300"></div>
                                 </div>
-                                <h3 className="text-2xl font-serif text-brand-primary mb-2">{member.name}</h3>
+                                <h3 className="text-2xl font-serif text-brand-primary dark:text-white mb-2">{member.name}</h3>
                                 <p className="text-brand-accent font-bold uppercase text-xs tracking-widest">{member.role}</p>
                             </div>
                         ))}

@@ -96,7 +96,7 @@ const Services = () => {
     const servicesList = t.services.list || [];
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white dark:bg-night transition-colors duration-500">
             {/* Header - More Visual */}
             <section className="bg-brand-primary text-white pt-40 pb-32 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">
@@ -145,20 +145,20 @@ const Services = () => {
 
                             {/* Text Container */}
                             <div className="text-container w-full lg:w-1/2 space-y-8">
-                                <span className="text-6xl lg:text-8xl text-gray-100 font-serif font-bold select-none leading-none">
+                                <span className="text-6xl lg:text-8xl text-gray-100 dark:text-gray-800 font-serif font-bold select-none leading-none">
                                     0{i + 1}
                                 </span>
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-lg bg-brand-light flex items-center justify-center text-brand-primary">
+                                        <div className="w-12 h-12 rounded-lg bg-brand-light dark:bg-night-card flex items-center justify-center text-brand-primary dark:text-brand-accent">
                                             <Icon className="w-6 h-6" />
                                         </div>
-                                        <h2 className="text-3xl lg:text-5xl font-serif text-brand-primary leading-tight">
+                                        <h2 className="text-3xl lg:text-5xl font-serif text-brand-primary dark:text-white leading-tight">
                                             {service.title}
                                         </h2>
                                     </div>
                                     <div className="w-20 h-1.5 bg-brand-accent rounded-full"></div>
-                                    <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-light">
+                                    <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed font-light">
                                         {service.desc}
                                     </p>
                                     <div className="pt-6">
@@ -166,7 +166,7 @@ const Services = () => {
                                             href={`https://wa.me/50660674833?text=Hola FG Constructores, me gustaría más información sobre el servicio de: ${service.title}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group inline-flex items-center gap-4 bg-brand-primary text-white border-2 border-brand-primary px-8 py-4 text-xs font-bold uppercase tracking-[3px] hover:bg-transparent hover:text-brand-primary transition-all duration-300 shadow-xl"
+                                            className="group inline-flex items-center gap-4 bg-brand-primary dark:bg-brand-accent text-white dark:text-brand-primary border-2 border-brand-primary dark:border-brand-accent px-8 py-4 text-xs font-bold uppercase tracking-[3px] hover:bg-transparent dark:hover:bg-brand-accent/10 hover:text-brand-primary dark:hover:text-brand-accent transition-all duration-300 shadow-xl"
                                         >
                                             Consultar por WhatsApp
                                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
@@ -214,16 +214,16 @@ const Services = () => {
             </section>
 
             {/* Global CTA */}
-            <section className="py-32 lg:py-48 bg-gray-50 text-center animate-section">
+            <section className="py-32 lg:py-48 bg-gray-50 dark:bg-night-card text-center animate-section transition-colors duration-500">
                 <div className="container mx-auto px-4 max-w-3xl">
-                    <h2 className="text-4xl lg:text-6xl font-serif text-brand-primary mb-12 leading-tight">
+                    <h2 className="text-4xl lg:text-6xl font-serif text-brand-primary dark:text-white mb-12 leading-tight">
                         {language === 'es' ? 'Construyamos juntos' : 'Let us build together'}
                     </h2>
                     <a
                         href="https://wa.me/50660674833"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-brand-accent text-brand-primary border-2 border-brand-accent px-16 py-6 text-sm font-bold uppercase tracking-[4px] hover:bg-transparent transition-all duration-300 shadow-2xl transform hover:-translate-y-2"
+                        className="inline-block bg-brand-accent text-brand-primary border-2 border-brand-accent px-16 py-6 text-sm font-bold uppercase tracking-[4px] hover:bg-transparent dark:hover:bg-white/10 dark:hover:text-white transition-all duration-300 shadow-2xl transform hover:-translate-y-2"
                     >
                         {language === 'es' ? 'Iniciar Conversación' : 'Start Conversation'}
                     </a>

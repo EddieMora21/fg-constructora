@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { useLanguage } from '../i18n';
 
+import imgBarva from '../assets/projects/residencia-barva/Fachadaexterior.webp';
+
 const Hero = () => {
     const heroRef = useRef(null);
     const lineRef = useRef(null);
@@ -74,7 +76,10 @@ const Hero = () => {
             ref={heroRef}
             className="relative h-screen flex items-center justify-center bg-brand-primary text-white overflow-hidden"
             style={{
-                background: 'linear-gradient(rgba(0, 30, 85, 0.85), rgba(0, 21, 51, 0.9)), url("https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat'
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 10, 26, 0.4) 0%, rgba(0, 10, 26, 0.6) 50%, rgba(0, 10, 26, 0.9) 100%), url(${imgBarva})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
             }}
         >
             <div className="container mx-auto px-4 text-center z-10">
@@ -84,7 +89,7 @@ const Hero = () => {
                     className="w-20 h-1 bg-brand-accent mx-auto mb-8 origin-center"
                 />
 
-                <h1 ref={titleRef} className="text-4xl md:text-6xl lg:text-7xl font-serif font-normal mb-6 leading-tight">
+                <h1 ref={titleRef} className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal mb-6 leading-tight">
                     {t.hero.title}
                 </h1>
 
@@ -112,7 +117,7 @@ const Hero = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
