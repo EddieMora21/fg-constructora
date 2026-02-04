@@ -12,6 +12,44 @@ import 'swiper/css/pagination';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const BentoGallery = ({ images, openLightbox, t, projectTitle }) => {
+    return (
+        <div className="container mx-auto px-4 py-20">
+            <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] md:auto-rows-[300px] gap-4">
+                {images.map((img, index) => {
+                    // Create a repeating pattern of sizes for the bento effect
+                    const patternIndex = index % 7;
+                    let gridClasses = "relative overflow-hidden group cursor-zoom-in rounded-2xl";
+
+                    if (patternIndex === 0) gridClasses += " col-span-2 row-span-2"; // Large square
+                    else if (patternIndex === 1) gridClasses += " col-span-2 md:col-span-1 row-span-1"; // Small
+                    else if (patternIndex === 2) gridClasses += " col-span-2 md:col-span-1 row-span-2"; // Tall
+                    else if (patternIndex === 5) gridClasses += " col-span-2 md:col-span-2 row-span-1"; // Wide
+
+                    return (
+                        <div
+                            key={index}
+                            onClick={() => openLightbox(index)}
+                            className={gridClasses}
+                        >
+                            <img
+                                src={img}
+                                alt={`${projectTitle} - ${index}`}
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur border border-white/30 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                                    <ZoomIn size={20} />
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+};
+
 const ProjectDetail = () => {
     const { id } = useParams();
     const containerRef = useRef(null);
@@ -246,162 +284,181 @@ const ProjectDetail = () => {
             </header>
 
             {/* --- SCROLLYTELLING SECTION (CONCEPT / CHALLENGE / SOLUTION) --- */}
-            <section className="scrolly-container relative">
-                <div className="md:grid md:grid-cols-2">
+            {(project.category !== 'Diseñados' && project.category !== 'Designed') && (
+                <section className="scrolly-container relative">
+                    <div className="md:grid md:grid-cols-2">
 
-                    {/* Sticky Visual (Left on Desktop, Top on Mobile) */}
-                    {/* On Desktop: Sticky | On Mobile: Static height */}
-                    <div className="scrolly-visual hidden md:block md:h-screen md:sticky md:top-0 bg-black overflow-hidden relative w-full">
-                        {scrollyImages.map((img, i) => (
-                            <img
-                                key={i}
-                                src={img}
-                                alt={`Vista ${i}`}
-                                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${activeImage === i ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Scrolling Narrative (Right) */}
-                    <div className="scrolly-content bg-white dark:bg-night relative z-10">
-
-                        {/* 01. INTRO / DESCRIPTION */}
-                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
-                            {/* Mobile Image 1 */}
-                            <img src={scrollyImages[0]} alt="Visión del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
-
-                            <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">01. La Visión</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
-                                {project.description.split('.')[0]}.
-                            </h2>
-                            <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed font-light">
-                                {project.description.substring(project.description.split('.')[0].length + 1)}
-                            </p>
+                        {/* Sticky Visual (Left on Desktop, Top on Mobile) */}
+                        {/* On Desktop: Sticky | On Mobile: Static height */}
+                        <div className="scrolly-visual hidden md:block md:h-screen md:sticky md:top-0 bg-black overflow-hidden relative w-full">
+                            {scrollyImages.map((img, i) => (
+                                <img
+                                    key={i}
+                                    src={img}
+                                    alt={`Vista ${i}`}
+                                    className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-1000 ease-in-out ${activeImage === i ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                                />
+                            ))}
                         </div>
 
-                        {/* 02. CHALLENGE */}
-                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
-                            {/* Mobile Image 2 */}
-                            <img src={scrollyImages[1]} alt="Desafío del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
+                        {/* Scrolling Narrative (Right) */}
+                        <div className="scrolly-content bg-white dark:bg-night relative z-10">
 
-                            <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">02. El Desafío</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
-                                Superando los estándares convencionales.
-                            </h2>
-                            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
-                                {project.challenge}
-                            </p>
-                        </div>
+                            {/* 01. INTRO / DESCRIPTION */}
+                            <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
+                                {/* Mobile Image 1 */}
+                                <img src={scrollyImages[0]} alt="Visión del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
 
-                        {/* 03. SOLUTION */}
-                        <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
-                            {/* Mobile Image 3 */}
-                            <img src={scrollyImages[2]} alt="Solución del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
+                                <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">01. La Visión</span>
+                                <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
+                                    {project.description.split('.')[0]}.
+                                </h2>
+                                <p className="text-gray-500 dark:text-gray-400 text-lg leading-relaxed font-light">
+                                    {project.description.substring(project.description.split('.')[0].length + 1)}
+                                </p>
+                            </div>
 
-                            <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">03. La Solución</span>
-                            <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
-                                Ingeniería y arte en perfecta armonía.
-                            </h2>
-                            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
-                                {project.solution}
-                            </p>
+                            {/* 02. CHALLENGE */}
+                            <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
+                                {/* Mobile Image 2 */}
+                                <img src={scrollyImages[1]} alt="Desafío del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
 
-                            {/* Project Stats Summary */}
-                            <div className="grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
-                                <div>
-                                    <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Duración</h4>
-                                    <p className="font-serif text-xl text-brand-primary dark:text-brand-accent">{project.duration}</p>
-                                </div>
-                                <div className="col-span-2">
-                                    <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Equipo</h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.team.map((m, i) => (
-                                            <span key={i} className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs tracking-wider text-gray-600 dark:text-gray-400 rounded-full">{m}</span>
-                                        ))}
+                                <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">02. El Desafío</span>
+                                <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
+                                    Superando los estándares convencionales.
+                                </h2>
+                                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
+                                    {project.challenge}
+                                </p>
+                            </div>
+
+                            {/* 03. SOLUTION */}
+                            <div className="story-section min-h-screen flex flex-col justify-center p-8 md:p-24">
+                                {/* Mobile Image 3 */}
+                                <img src={scrollyImages[2]} alt="Solución del proyecto" className="md:hidden w-full h-auto max-h-[70vh] object-contain mb-8 rounded-lg shadow-lg bg-black/5" />
+
+                                <span className="text-brand-accent font-bold text-xs uppercase tracking-widest mb-6 block">03. La Solución</span>
+                                <h2 className="text-3xl md:text-5xl font-serif text-gray-900 dark:text-white mb-8 leading-tight">
+                                    Ingeniería y arte en perfecta armonía.
+                                </h2>
+                                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed font-light">
+                                    {project.solution}
+                                </p>
+
+                                {/* Project Stats Summary */}
+                                <div className="grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
+                                    <div>
+                                        <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Duración</h4>
+                                        <p className="font-serif text-xl text-brand-primary dark:text-brand-accent">{project.duration}</p>
+                                    </div>
+                                    <div className="col-span-2">
+                                        <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Equipo</h4>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.team.map((m, i) => (
+                                                <span key={i} className="inline-block px-3 py-1 bg-gray-100 dark:bg-gray-800 text-xs tracking-wider text-gray-600 dark:text-gray-400 rounded-full">{m}</span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
-            {/* --- HORIZONTAL GALLERY --- */}
-            <section className={`gallery-wrapper relative bg-brand-primary dark:bg-night text-white overflow-hidden ${isLightboxOpen ? 'invisible' : ''}`}>
-                <div className="pt-20 pb-8 md:pt-28 px-8 md:px-16">
-                    <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
-                    <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">
-                        <ArrowRight size={12} /> Desliza o haz clic para ampliar
-                    </p>
-                </div>
+            {/* --- GALLERY SECTION --- */}
+            {project.category === 'Diseñados' || project.category === 'Designed' ? (
+                <section className="bg-white dark:bg-night relative">
+                    <div className="pt-20 px-8 md:px-16 text-center">
+                        <h3 className="text-3xl md:text-5xl font-serif mb-4 text-gray-900 dark:text-white">Galería de Diseño</h3>
+                        <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center justify-center gap-2">
+                            Explora cada rincón de este concepto
+                        </p>
+                    </div>
+                    <BentoGallery
+                        images={project.images}
+                        openLightbox={openLightbox}
+                        t={t}
+                        projectTitle={project.title}
+                    />
+                </section>
+            ) : (
+                <section className={`gallery-wrapper relative bg-brand-primary dark:bg-night text-white overflow-hidden ${isLightboxOpen ? 'invisible' : ''}`}>
+                    <div className="pt-20 pb-8 md:pt-28 px-8 md:px-16">
+                        <h3 className="text-2xl font-serif mb-2">Galería Extendida</h3>
+                        <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center gap-2">
+                            <ArrowRight size={12} /> Desliza o haz clic para ampliar
+                        </p>
+                    </div>
 
-                {/* MOBILE: Swiper Carousel */}
-                <div className="md:hidden pb-12">
-                    <Swiper
-                        modules={[FreeMode, Pagination]}
-                        spaceBetween={16}
-                        slidesPerView={1.2}
-                        freeMode={true}
-                        pagination={{ clickable: true }}
-                        className="px-4"
-                    >
-                        {project.images.slice(3).map((img, index) => {
-                            const actualIndex = index + 3;
-                            return (
-                                <SwiperSlide key={index}>
+                    {/* MOBILE: Swiper Carousel */}
+                    <div className="md:hidden pb-12">
+                        <Swiper
+                            modules={[FreeMode, Pagination]}
+                            spaceBetween={16}
+                            slidesPerView={1.2}
+                            freeMode={true}
+                            pagination={{ clickable: true }}
+                            className="px-4"
+                        >
+                            {project.images.slice(3).map((img, index) => {
+                                const actualIndex = index + 3;
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div
+                                            onClick={() => openLightbox(actualIndex)}
+                                            className="relative aspect-[3/4] overflow-hidden cursor-zoom-in"
+                                        >
+                                            <img
+                                                src={img}
+                                                alt={`Detalle ${actualIndex}`}
+                                                className="w-full h-full object-cover"
+                                            />
+
+                                            <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
+                                                {String(actualIndex + 1).padStart(2, '0')}
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                );
+                            })}
+                        </Swiper>
+                    </div>
+
+                    {/* DESKTOP: GSAP Horizontal Scroll */}
+                    <div className="hidden md:block h-[70vh]">
+                        <div ref={galleryRef} className="gallery-track flex gap-16 px-16 h-full items-center" style={{ width: 'fit-content' }}>
+                            <div className="w-[20vw] flex-shrink-0"></div>
+                            {project.images.slice(3).map((img, index) => {
+                                const actualIndex = index + 3;
+                                return (
                                     <div
+                                        key={index}
                                         onClick={() => openLightbox(actualIndex)}
-                                        className="relative aspect-[3/4] overflow-hidden cursor-zoom-in"
+                                        className="gallery-item relative w-[60vh] aspect-[4/3] flex-shrink-0 group overflow-hidden hover:opacity-100 transition-opacity duration-500 cursor-zoom-in"
                                     >
                                         <img
                                             src={img}
                                             alt={`Detalle ${actualIndex}`}
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
                                         />
-
+                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                            <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-300">
+                                                <ZoomIn size={24} />
+                                            </div>
+                                        </div>
                                         <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
                                             {String(actualIndex + 1).padStart(2, '0')}
                                         </div>
                                     </div>
-                                </SwiperSlide>
-                            );
-                        })}
-                    </Swiper>
-                </div>
-
-                {/* DESKTOP: GSAP Horizontal Scroll */}
-                <div className="hidden md:block h-[70vh]">
-                    <div ref={galleryRef} className="gallery-track flex gap-16 px-16 h-full items-center" style={{ width: 'fit-content' }}>
-                        <div className="w-[20vw] flex-shrink-0"></div>
-                        {project.images.slice(3).map((img, index) => {
-                            const actualIndex = index + 3;
-                            return (
-                                <div
-                                    key={index}
-                                    onClick={() => openLightbox(actualIndex)}
-                                    className="gallery-item relative w-[60vh] aspect-[4/3] flex-shrink-0 group overflow-hidden hover:opacity-100 transition-opacity duration-500 cursor-zoom-in"
-                                >
-                                    <img
-                                        src={img}
-                                        alt={`Detalle ${actualIndex}`}
-                                        className="w-full h-full object-cover transform scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
-                                    />
-                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur border border-white/20 flex items-center justify-center text-white transform scale-50 group-hover:scale-100 transition-transform duration-300">
-                                            <ZoomIn size={24} />
-                                        </div>
-                                    </div>
-                                    <div className="absolute bottom-4 right-4 text-xs font-mono bg-black/50 backdrop-blur px-2 py-1 rounded text-white/80">
-                                        {String(actualIndex + 1).padStart(2, '0')}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                        <div className="w-[20vw] flex-shrink-0"></div>
+                                );
+                            })}
+                            <div className="w-[20vw] flex-shrink-0"></div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* --- NEXT PROJECT NAV --- */}
             <Link to={`/proyectos/${nextId}`} className="next-project-section block h-[80vh] relative overflow-hidden group cursor-pointer border-t-8 border-brand-accent">

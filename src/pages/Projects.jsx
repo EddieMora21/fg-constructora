@@ -46,9 +46,9 @@ const Projects = () => {
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                     {filteredProjects.map((proj) => {
-                        const isRender = proj.category === 'Diseñados' || proj.category === 'Designed';
-                        const CardComponent = isRender ? 'div' : Link;
-                        const cardProps = isRender ? { key: proj.id } : { to: `/proyectos/${proj.id}`, key: proj.id };
+                        const isRender = false; // All projects are now clickable to see their galleries
+                        const CardComponent = Link;
+                        const cardProps = { to: `/proyectos/${proj.id}`, key: proj.id };
 
                         return (
                             <CardComponent
