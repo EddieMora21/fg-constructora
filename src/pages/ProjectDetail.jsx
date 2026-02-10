@@ -60,7 +60,7 @@ const ProjectDetail = () => {
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
     // Use translated projects list
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     // Debugging logs
     console.log('LanguageContext t:', t);
@@ -347,8 +347,12 @@ const ProjectDetail = () => {
 
                                 {/* Project Stats Summary */}
                                 <div className="grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-gray-200 dark:border-gray-700">
+                                    <div className="col-span-2">
+                                        <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">{language === 'es' ? 'Periodo' : 'Period'}</h4>
+                                        <p className="font-serif text-xl text-brand-primary dark:text-brand-accent">{project.year}</p>
+                                    </div>
                                     <div>
-                                        <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">Duración</h4>
+                                        <h4 className="text-gray-400 dark:text-gray-500 text-[10px] uppercase tracking-widest mb-3">{language === 'es' ? 'Duración' : 'Duration'}</h4>
                                         <p className="font-serif text-xl text-brand-primary dark:text-brand-accent">{project.duration}</p>
                                     </div>
                                     <div className="col-span-2">

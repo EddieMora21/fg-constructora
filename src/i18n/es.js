@@ -36,7 +36,7 @@ const es = {
                 { name: 'Arq. Gilberth Sanchez', role: 'Líder de Diseño', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Presupuestos y Costos', image: '/equipo/enoc-pena.webp' },
                 { name: 'Edwin Chavarria', role: 'Modelador BIM', image: '/equipo/edwin-chavarria.webp' },
-                { name: 'Luciana Miranda', role: 'Departamento de ingeniería de costos y logística', image: '/equipo/luciana-miranda.webp' }
+                { name: 'Ing. Luciana Miranda', role: 'Departamento de ingeniería de costos y logística', image: '/equipo/luciana-miranda.webp' }
             ]
         },
         stats: {
@@ -160,7 +160,7 @@ const es = {
                 title: 'Residencia D Barva',
                 category: 'Construidos',
                 location: 'Barva, Heredia',
-                year: '2024',
+                year: 'Septiembre 2023 - Enero 2024',
                 area: 'N/A',
                 duration: '5 Meses',
                 description: 'Arquitectura Moderna con Influencia Industrial y Toques Minimalistas. El diseño se alinea con la arquitectura moderna y contemporánea: Volúmenes Geométricos Puros con formas rectangulares y cúbicas limpias, minimizando las ornamentaciones. Grandes Aberturas Acorazadas con ventanales de piso a techo que maximizan la entrada de luz natural y borran el límite entre el interior y el exterior. Paleta de Colores Neutros con tonos grises y blancos rotos, con el azul profundo como color de acento, creando un contraste audaz pero elegante. Interiores de Doble Altura que aumentan la sensación de amplitud y luminosidad.',
