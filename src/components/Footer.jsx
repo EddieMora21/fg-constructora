@@ -22,8 +22,15 @@ const Footer = () => {
                     <h4 className="font-sans text-xs font-bold uppercase tracking-widest mb-6 text-brand-accent">{t.footer.company}</h4>
                     <ul>
                         <li className="mb-3"><Link to="/nosotros" className="text-gray-400 hover:text-white transition-colors">{t.footer.companyLinks[0]}</Link></li>
-                        <li className="mb-3"><Link to="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.companyLinks[1]}</Link></li>
-                        <li className="mb-3"><Link to="#" className="text-gray-400 hover:text-white transition-colors">{t.footer.companyLinks[2]}</Link></li>
+                        <li className="mb-3">
+                            <a
+                                href="/docs/Curriculum-Empresarial.pdf"
+                                download
+                                className="text-gray-400 hover:text-white transition-colors"
+                            >
+                                {t.footer.companyLinks[1]}
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div className="footer-col">
