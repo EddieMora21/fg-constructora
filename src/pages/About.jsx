@@ -86,6 +86,8 @@ const About = () => {
 
     return (
         <div className="min-h-screen overflow-hidden bg-white dark:bg-night transition-colors duration-500">
+            <title>Nosotros - FG Constructores</title>
+            <meta name="description" content="Conoce la historia, visión, y el equipo detrás de FG Constructores. Construimos más que edificios, construimos sueños." />
             {/* Hero */}
             <section
                 ref={heroRef}

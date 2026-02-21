@@ -21,6 +21,8 @@ const Projects = () => {
 
     return (
         <div className="min-h-screen bg-white dark:bg-night transition-colors duration-500">
+            <title>Proyectos - FG Constructores</title>
+            <meta name="description" content="Explora nuestro portafolio de proyectos de construcción y arquitectura. Conoce la calidad y el compromiso de FG Constructores en cada obra." />
             <section className="bg-brand-primary py-32 text-white relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
                 <div className="container mx-auto px-4 text-center relative z-10">

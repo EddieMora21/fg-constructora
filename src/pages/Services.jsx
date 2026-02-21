@@ -97,6 +97,8 @@ const Services = () => {
 
     return (
         <div className="min-h-screen bg-white dark:bg-night transition-colors duration-500">
+            <title>Servicios - FG Constructores</title>
+            <meta name="description" content="Descubre todos los servicios de FG Constructores: gestión de proyectos, construcción, ingeniería, arquitectura y más capacidades." />
             {/* Header - More Visual */}
             <section className="bg-brand-primary text-white pt-40 pb-32 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-20">

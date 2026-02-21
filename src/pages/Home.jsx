@@ -84,6 +84,8 @@ const Home = () => {
 
     return (
         <>
+            <title>Inicio - FG Constructores</title>
+            <meta name="description" content="Bienvenido a FG Constructores. Somos expertos en construcción, gestión de proyectos y servicios arquitectónicos en beneficio de nuestros clientes." />
             <Hero />
 
             {/* Featured Projects - Horizontal Scroll Section */}
