@@ -102,7 +102,7 @@ const Home = () => {
 
                     {/* Project 1: Casa Corteza */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
-                        <Link to="/proyectos/1" className="block w-full h-full relative">
+                        <Link to="/proyectos/casa-corteza" className="block w-full h-full relative">
                             <img
                                 src={imgCorteza}
                                 alt="Casa Corteza"
@@ -124,7 +124,7 @@ const Home = () => {
 
                     {/* Project 2: Colinas del Poro */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
-                        <Link to="/proyectos/2" className="block w-full h-full relative">
+                        <Link to="/proyectos/colinas-del-poro" className="block w-full h-full relative">
                             <img
                                 src={imgColinas}
                                 alt="Colinas del Poro"
@@ -146,7 +146,7 @@ const Home = () => {
 
                     {/* Project 3: Residencia D Barva */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
-                        <Link to="/proyectos/3" className="block w-full h-full relative">
+                        <Link to="/proyectos/residencia-barva" className="block w-full h-full relative">
                             <img
                                 src={imgBarva}
                                 alt="Residencia D Barva"

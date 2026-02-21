@@ -97,7 +97,7 @@ const en = {
         explore: 'Explore',
         projectsList: [
             {
-                id: 1,
+                id: 'casa-corteza',
                 title: 'Casa Corteza',
                 category: 'Built',
                 location: 'Grecia, Alajuela',
@@ -127,7 +127,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 2,
+                id: 'colinas-del-poro',
                 title: 'Colinas del Poro',
                 category: 'Built',
                 location: 'Grecia, Alajuela',
@@ -156,7 +156,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 3,
+                id: 'residencia-barva',
                 title: 'Residencia D Barva',
                 category: 'Built',
                 location: 'Barva, Heredia',
@@ -180,7 +180,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 50,
+                id: 'casa-theo',
                 title: 'Casa Theo',
                 category: 'Designed',
                 location: 'Patarra, San José',
@@ -207,7 +207,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 51,
+                id: 'casita-mora',
                 title: 'Casita Mora',
                 category: 'Designed',
                 location: 'Quepos, Puntarenas',
@@ -236,7 +236,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 52,
+                id: 'san-mateo',
                 title: 'San Mateo',
                 category: 'Designed',
                 location: 'San Mateo, Costa Rica',
@@ -263,7 +263,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 54,
+                id: 'sibo',
                 title: 'Sibo',
                 category: 'Designed',
                 location: 'San Antonio Escazú',
@@ -300,7 +300,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 53,
+                id: 'residencia-city-view',
                 title: 'Residencia City View',
                 category: 'Built',
                 location: 'Escazú',
@@ -326,7 +326,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 11,
+                id: 'cabana-cedrales',
                 title: 'Cabaña Cedrales',
                 category: 'Built',
                 location: 'Tarbaca, San José',
@@ -347,7 +347,7 @@ const en = {
                 team: ['FG Construction Team']
             },
             {
-                id: 55,
+                id: 'habitat-ps',
                 title: 'Habitat P&S',
                 category: 'Designed',
                 location: 'Costa Rica',

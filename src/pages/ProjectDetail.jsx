@@ -70,7 +70,7 @@ const ProjectDetail = () => {
     const projectsList = t?.projects?.projectsList || [];
 
     // Find current project
-    const foundProject = projectsList.find(p => p.id === parseInt(id));
+    const foundProject = projectsList.find(p => p.id === id || p.id === parseInt(id));
 
     // Default fallback project if not found or list is empty
     const project = foundProject || {
@@ -92,7 +92,7 @@ const ProjectDetail = () => {
     };
 
     // Setup for Next Project Logic
-    const currentIndex = projectsList.findIndex(p => p.id === parseInt(id));
+    const currentIndex = projectsList.findIndex(p => p.id === id || p.id === parseInt(id));
     const nextIndex = (currentIndex + 1) % projectsList.length;
     const nextProject = projectsList[nextIndex] || projectsList[0];
     const nextId = nextProject.id;
