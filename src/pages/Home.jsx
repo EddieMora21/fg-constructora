@@ -100,7 +100,29 @@ const Home = () => {
                 {/* Horizontal Track */}
                 <div ref={sectionRef} className="flex h-full w-fit"> {/* Dynamic Width matched to children */}
 
-                    {/* Project 1: Casa Corteza */}
+                    {/* Project 1: Casa Theo */}
+                    <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
+                        <Link to="/proyectos/casa-theo" className="block w-full h-full relative">
+                            <img
+                                src="/projects/casa-theo/CasaPatarraFG-88.webp"
+                                alt="Casa Theo"
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500"></div>
+
+                            <div className="absolute bottom-0 left-0 p-8 md:p-24 w-full md:w-2/3 bg-gradient-to-t from-black via-black/50 to-transparent">
+                                <span className="text-brand-accent font-bold tracking-[0.3em] uppercase mb-4 block">2025</span>
+                                <h3 className="text-5xl md:text-8xl font-serif text-white mb-6">Casa Theo</h3>
+                                <div className="mt-8">
+                                    <span className="inline-block border border-white/30 bg-black/20 backdrop-blur-sm px-8 py-3 text-xs font-bold uppercase tracking-[0.2em] text-white hover:bg-white hover:text-black transition-all duration-300 group-hover:border-white">
+                                        Ver Proyecto
+                                    </span>
+                                </div>
+                            </div>
+                        </Link>
+                    </div>
+
+                    {/* Project 2: Casa Corteza */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/casa-corteza" className="block w-full h-full relative">
                             <img
@@ -122,7 +144,7 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    {/* Project 2: Colinas del Poro */}
+                    {/* Project 3: Colinas del Poro */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/colinas-del-poro" className="block w-full h-full relative">
                             <img
@@ -144,7 +166,7 @@ const Home = () => {
                         </Link>
                     </div>
 
-                    {/* Project 3: Residencia D Barva */}
+                    {/* Project 4: Residencia D Barva */}
                     <div className="w-screen h-full relative flex-shrink-0 group overflow-hidden">
                         <Link to="/proyectos/residencia-barva" className="block w-full h-full relative">
                             <img

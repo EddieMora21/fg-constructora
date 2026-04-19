@@ -92,9 +92,14 @@ const ProjectDetail = () => {
     };
 
     // Setup for Next Project Logic
-    const currentIndex = projectsList.findIndex(p => p.id === id || p.id === parseInt(id));
-    const nextIndex = (currentIndex + 1) % projectsList.length;
-    const nextProject = projectsList[nextIndex] || projectsList[0];
+    const sameCategoryProjects = projectsList.filter(p => p.category === project.category);
+    const validProjectsList = sameCategoryProjects.length > 0 ? sameCategoryProjects : (projectsList.length > 0 ? projectsList : [project]);
+
+    let currentIndex = validProjectsList.findIndex(p => p.id === id || p.id === parseInt(id));
+    if (currentIndex === -1) currentIndex = 0;
+
+    const nextIndex = (currentIndex + 1) % validProjectsList.length;
+    const nextProject = validProjectsList[nextIndex];
     const nextId = nextProject.id;
 
     // Scrollytelling Images (First 3)

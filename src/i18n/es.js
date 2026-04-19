@@ -97,6 +97,35 @@ const es = {
         explore: 'Explorar',
         projectsList: [
             {
+                id: 'casa-theo',
+                title: 'Casa Theo',
+                category: 'Construidos',
+                location: 'Patarra, San José',
+                year: '2025',
+                duration: '20 semanas (Julio - Noviembre 2025)',
+                description: 'Este proyecto presenta una propuesta de arquitectura contemporánea de corte industrial y minimalista, diseñada bajo una lógica de aprovechamiento del terreno y búsqueda de transparencia hacia el paisaje. La casa utiliza una tipología de planta libre elevada, donde el volumen principal se suspende sobre una estructura de columnas para liberar el nivel inferior como garaje o área social techada. Predomina una silueta asimétrica bajo un techo a dos aguas de baja pendiente, reforzada por una fachada en tonos oscuros que aporta un carácter moderno y elegante en contraste con el entorno natural.',
+                challenge: 'Resolver una vivienda elevada con acceso jerarquizado, integrando una rampa metálica de lenguaje industrial, espacios sociales abiertos y una relación franca con el paisaje sin perder funcionalidad ni claridad estructural.',
+                solution: 'Se desarrolló un área social diáfana que integra sala, comedor y cocina bajo techos altos que siguen la pendiente de la cubierta, con ventanales de piso a techo en marcos de aluminio negro para maximizar luz natural y vistas. La propuesta se complementa con terraza social tipo BBQ, baños de estética minimalista con espejos retroiluminados y sobres en concreto pulido, además de una escalera interior limpia con huellas claras y pasamanos de madera que aporta calidez al conjunto.',
+                images: [
+                    '/projects/casa-theo/CasaPatarraFG-88.webp',
+                    '/projects/casa-theo/CasaPatarraFG-1.webp',
+                    '/projects/casa-theo/CasaPatarraFG-3.webp',
+                    '/projects/casa-theo/CasaPatarraFG-30.webp',
+                    '/projects/casa-theo/CasaPatarraFG-11.webp',
+                    '/projects/casa-theo/CasaPatarraFG-10.webp',
+                    '/projects/casa-theo/CasaPatarraFG-12.webp',
+                    '/projects/casa-theo/CasaPatarraFG-20.webp',
+                    '/projects/casa-theo/CasaPatarraFG-21.webp',
+                    '/projects/casa-theo/CasaPatarraFG-22.webp',
+                    '/projects/casa-theo/CasaPatarraFG-15.webp',
+                    '/projects/casa-theo/CasaPatarraFG-18.webp',
+                    '/projects/casa-theo/CasaPatarraFG-73.webp',
+                    '/projects/casa-theo/CasaPatarraFG-31.webp',
+                    '/projects/casa-theo/CasaPatarraFG-33.webp'
+                ],
+                team: ['Equipo FG Constructores']
+            },
+            {
                 id: 'casa-corteza',
                 title: 'Casa Corteza',
                 category: 'Construidos',
@@ -176,33 +205,6 @@ const es = {
                     '/projects/residencia-barva/Cuarto1.webp',
                     '/projects/residencia-barva/Cuarto2.webp',
                     '/projects/residencia-barva/Bano.webp'
-                ],
-                team: ['Equipo FG Constructores']
-            },
-            {
-                id: 'casa-theo',
-                title: 'Casa Theo',
-                category: 'Diseñados',
-                location: 'Patarra, San José',
-                year: '2025',
-                description: 'Diseño residencial de vanguardia centrado en la integración con el entorno y el máximo aprovechamiento de la luz natural. Un concepto que equilibra la privacidad con la apertura espacial.',
-                challenge: 'Lograr una distribución fluida en una topografía compleja mientras se mantiene una estética minimalista y cálida.',
-                solution: 'Uso de grandes superficies vidriadas, estructuras metálicas ligeras y una paleta de materiales naturales que mimetizan la obra con su ubicación.',
-                images: [
-                    '/projects/casa-theo/A2.webp',
-                    '/projects/casa-theo/A3.webp',
-                    '/projects/casa-theo/d2.webp',
-                    '/projects/casa-theo/d3.webp',
-                    '/projects/casa-theo/v6.webp',
-                    '/projects/casa-theo/v7.webp',
-                    '/projects/casa-theo/v8.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-04-21-at-4.35.03-PM-10.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-04-21-at-4.35.03-PM-6.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-04-21-at-4.35.03-PM-7.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-04-21-at-4.35.03-PM-8.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-04-21-at-4.35.03-PM-9.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-05-08-at-11.54.35-AM.webp',
-                    '/projects/casa-theo/WhatsApp-Image-2025-05-08-at-11.55.03-AM.webp'
                 ],
                 team: ['Equipo FG Constructores']
             },
