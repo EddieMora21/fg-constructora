@@ -91,6 +91,9 @@ const ProjectDetail = () => {
         team: ['Equipo FG Constructores']
     };
 
+    const isDesignedProject = project.category === 'Diseñados' || project.category === 'Designed';
+    const isInProgressProject = project.category === 'En proceso' || project.category === 'In Progress';
+
     // Setup for Next Project Logic
     const sameCategoryProjects = projectsList.filter(p => p.category === project.category);
     const validProjectsList = sameCategoryProjects.length > 0 ? sameCategoryProjects : (projectsList.length > 0 ? projectsList : [project]);
@@ -289,7 +292,7 @@ const ProjectDetail = () => {
             </header>
 
             {/* --- SCROLLYTELLING SECTION (CONCEPT / CHALLENGE / SOLUTION) --- */}
-            {(project.category !== 'Diseñados' && project.category !== 'Designed') && (
+            {!isDesignedProject && !isInProgressProject && (
                 <section className="scrolly-container relative">
                     <div className="md:grid md:grid-cols-2">
 
@@ -377,7 +380,24 @@ const ProjectDetail = () => {
             )}
 
             {/* --- GALLERY SECTION --- */}
-            {project.category === 'Diseñados' || project.category === 'Designed' ? (
+            {isInProgressProject ? (
+                <section className="bg-white dark:bg-night relative">
+                    <div className="pt-20 px-8 md:px-16 text-center">
+                        <h3 className="text-3xl md:text-5xl font-serif mb-4 text-gray-900 dark:text-white">
+                            {language === 'es' ? 'Registro de Avance' : 'Progress Gallery'}
+                        </h3>
+                        <p className="text-brand-accent text-[10px] tracking-[0.3em] uppercase opacity-80 flex items-center justify-center gap-2">
+                            {language === 'es' ? 'Solo imágenes del proceso constructivo' : 'Image-only construction log'}
+                        </p>
+                    </div>
+                    <BentoGallery
+                        images={project.images}
+                        openLightbox={openLightbox}
+                        t={t}
+                        projectTitle={project.title}
+                    />
+                </section>
+            ) : isDesignedProject ? (
                 <section className="bg-white dark:bg-night relative">
                     <div className="pt-20 px-8 md:px-16 text-center">
                         <h3 className="text-3xl md:text-5xl font-serif mb-4 text-gray-900 dark:text-white">Galería de Diseño</h3>

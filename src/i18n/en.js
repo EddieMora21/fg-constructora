@@ -36,7 +36,7 @@ const en = {
                 { name: 'Arq. Gilberth Sanchez', role: 'Design Leader', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Budgets & Costs', image: '/equipo/enoc-pena.webp' },
                 { name: 'Edwin Chavarria', role: 'BIM Modeler', image: '/equipo/edwin-chavarria.webp' },
-                { name: 'Ing. Luciana Miranda', role: 'Engineering Costs and Logistics Department', image: '/equipo/luciana-miranda.webp' }
+                { name: 'Milagro Araya', role: 'Engineering Costs and Logistics Department', image: '/equipo/luciana-miranda-portrait.webp' }
             ]
         },
         stats: {
@@ -85,7 +85,7 @@ const en = {
     projects: {
         title: 'Project Portfolio',
         subtitle: 'A selection of our most emblematic projects in Costa Rica and the region. Quality, innovation and sustainability in every square meter.',
-        filters: ['Built', 'Designed'],
+        filters: ['Built', 'Designed', 'In Progress'],
         caseStudy: {
             title: 'Success Story',
             projectTitle: 'Torre Sabana: Vertical Innovation',
@@ -96,6 +96,65 @@ const en = {
         viewProject: 'View Project',
         explore: 'Explore',
         projectsList: [
+            {
+                id: 'obra-patarra',
+                title: 'Patarra Worksite',
+                category: 'In Progress',
+                location: 'Patarra, San Jose',
+                duration: 'In progress',
+                description: 'Visual log of an active job site in Patarra, San Jose. The image set documents structure, vertical circulation, wall systems, and on-site technical follow-up.',
+                challenge: 'To maintain construction continuity across structure, walls, and early spatial definition while the project remains active.',
+                solution: 'Each key stage is documented to show the real evolution of the project and support technical control during execution.',
+                images: [
+                    '/projects/en-proceso/en-proceso-11.webp',
+                    '/projects/en-proceso/en-proceso-12.webp',
+                    '/projects/en-proceso/en-proceso-13.webp',
+                    '/projects/en-proceso/en-proceso-14.webp',
+                    '/projects/en-proceso/en-proceso-15.webp',
+                    '/projects/en-proceso/en-proceso-20.webp'
+                ],
+                team: ['FG Construction Team']
+            },
+            {
+                id: 'obra-monte-abajo',
+                title: 'Monte Abajo Worksite',
+                category: 'In Progress',
+                location: 'San Antonio, San Jose',
+                duration: 'In progress',
+                description: 'Progress follow-up for a job site in Monte Abajo, San Antonio. The gallery brings together foundations, slab, wall construction, roofing, and early interior work.',
+                challenge: 'To coordinate the transition from structural work to cleaner enclosure and roofing stages without losing execution rhythm.',
+                solution: 'The process is documented by stage so the project can be read clearly from foundation works through the first visible finishing phases.',
+                images: [
+                    '/projects/en-proceso/en-proceso-02.webp',
+                    '/projects/en-proceso/en-proceso-08.webp',
+                    '/projects/en-proceso/en-proceso-09.webp',
+                    '/projects/en-proceso/en-proceso-16.webp',
+                    '/projects/en-proceso/en-proceso-17.webp',
+                    '/projects/en-proceso/en-proceso-18.webp',
+                    '/projects/en-proceso/en-proceso-19.webp'
+                ],
+                team: ['FG Construction Team']
+            },
+            {
+                id: 'obra-heredia',
+                title: 'Heredia Worksite',
+                category: 'In Progress',
+                location: 'Heredia, Costa Rica',
+                duration: 'In progress',
+                description: 'A series of images from an active worksite in Heredia across early construction phases. It includes layout, drilling, foundations, gray structure, and technical details in progress.',
+                challenge: 'To organize very different early and mid-stage images so the project follow-up remains readable and useful.',
+                solution: 'The gallery was grouped by construction logic: site preparation, foundations, initial structure, and technical on-site details.',
+                images: [
+                    '/projects/en-proceso/en-proceso-01.webp',
+                    '/projects/en-proceso/en-proceso-03.webp',
+                    '/projects/en-proceso/en-proceso-04.webp',
+                    '/projects/en-proceso/en-proceso-05.webp',
+                    '/projects/en-proceso/en-proceso-06.webp',
+                    '/projects/en-proceso/en-proceso-07.webp',
+                    '/projects/en-proceso/en-proceso-10.webp'
+                ],
+                team: ['FG Construction Team']
+            },
             {
                 id: 'casa-theo',
                 title: 'Casa Theo',

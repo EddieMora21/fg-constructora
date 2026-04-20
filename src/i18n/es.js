@@ -36,7 +36,7 @@ const es = {
                 { name: 'Arq. Gilberth Sanchez', role: 'Líder de Diseño', image: '/equipo/gilberth-sanchez.webp' },
                 { name: 'Enoc Peña', role: 'Presupuestos y Costos', image: '/equipo/enoc-pena.webp' },
                 { name: 'Edwin Chavarria', role: 'Modelador BIM', image: '/equipo/edwin-chavarria.webp' },
-                { name: 'Ing. Luciana Miranda', role: 'Departamento de ingeniería de costos y logística', image: '/equipo/luciana-miranda.webp' }
+                { name: 'Milagro Araya', role: 'Departamento de ingeniería de costos y logística', image: '/equipo/luciana-miranda-portrait.webp' }
             ]
         },
         stats: {
@@ -85,7 +85,7 @@ const es = {
     projects: {
         title: 'Portafolio de Obras',
         subtitle: 'Una selección de nuestros proyectos más emblemáticos en Costa Rica y la región. Calidad, innovación y sostenibilidad en cada metro cuadrado.',
-        filters: ['Construidos', 'Diseñados'],
+        filters: ['Construidos', 'Diseñados', 'En proceso'],
         caseStudy: {
             title: 'Caso de Éxito',
             projectTitle: 'Torre Sabana: Innovación Vertical',
@@ -96,6 +96,65 @@ const es = {
         viewProject: 'Ver Proyecto',
         explore: 'Explorar',
         projectsList: [
+            {
+                id: 'obra-patarra',
+                title: 'Obra Patarra',
+                category: 'En proceso',
+                location: 'Patarra, San José',
+                duration: 'En ejecución',
+                description: 'Registro visual del avance de una obra en Patarra, San José. La selección documenta estructura, circulación vertical, cerramientos y seguimiento técnico en sitio.',
+                challenge: 'Mantener continuidad constructiva entre estructura, muros y primeras etapas de definición espacial mientras la obra sigue activa.',
+                solution: 'Se documenta cada etapa clave del proceso para mostrar la evolución real del proyecto y facilitar el control técnico durante la ejecución.',
+                images: [
+                    '/projects/en-proceso/en-proceso-11.webp',
+                    '/projects/en-proceso/en-proceso-12.webp',
+                    '/projects/en-proceso/en-proceso-13.webp',
+                    '/projects/en-proceso/en-proceso-14.webp',
+                    '/projects/en-proceso/en-proceso-15.webp',
+                    '/projects/en-proceso/en-proceso-20.webp'
+                ],
+                team: ['Equipo FG Constructores']
+            },
+            {
+                id: 'obra-monte-abajo',
+                title: 'Obra Monte Abajo',
+                category: 'En proceso',
+                location: 'San Antonio, San José',
+                duration: 'En ejecución',
+                description: 'Seguimiento de una obra en Monte Abajo, San Antonio. La galería reúne cimentación, losa, levantamiento de muros, cubierta e interiores en desarrollo.',
+                challenge: 'Coordinar el avance de obra desde estructura gris hasta etapas más limpias de cerramiento y techado sin perder ritmo de ejecución.',
+                solution: 'La documentación por etapas permite leer con claridad el progreso del proyecto y distinguir su evolución desde cimentación hasta primeras terminaciones.',
+                images: [
+                    '/projects/en-proceso/en-proceso-02.webp',
+                    '/projects/en-proceso/en-proceso-08.webp',
+                    '/projects/en-proceso/en-proceso-09.webp',
+                    '/projects/en-proceso/en-proceso-16.webp',
+                    '/projects/en-proceso/en-proceso-17.webp',
+                    '/projects/en-proceso/en-proceso-18.webp',
+                    '/projects/en-proceso/en-proceso-19.webp'
+                ],
+                team: ['Equipo FG Constructores']
+            },
+            {
+                id: 'obra-heredia',
+                title: 'Obra Heredia',
+                category: 'En proceso',
+                location: 'Heredia, Costa Rica',
+                duration: 'En ejecución',
+                description: 'Serie de imágenes de una obra en Heredia en distintas fases tempranas. Incluye replanteo, perforación, cimentación, obra gris y detalles de instalación.',
+                challenge: 'Ordenar visualmente etapas muy distintas de arranque y desarrollo para que el seguimiento del proyecto sea legible y útil.',
+                solution: 'Se agruparon las imágenes por lógica de avance: preparación del terreno, fundaciones, estructura inicial y detalles técnicos de obra.',
+                images: [
+                    '/projects/en-proceso/en-proceso-01.webp',
+                    '/projects/en-proceso/en-proceso-03.webp',
+                    '/projects/en-proceso/en-proceso-04.webp',
+                    '/projects/en-proceso/en-proceso-05.webp',
+                    '/projects/en-proceso/en-proceso-06.webp',
+                    '/projects/en-proceso/en-proceso-07.webp',
+                    '/projects/en-proceso/en-proceso-10.webp'
+                ],
+                team: ['Equipo FG Constructores']
+            },
             {
                 id: 'casa-theo',
                 title: 'Casa Theo',

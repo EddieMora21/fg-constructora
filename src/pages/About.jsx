@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import visionImg from '../assets/about/equipo.webp';
+import visionImg from '../assets/about/EquipoV2.webp';
 import logoImg from '../assets/about/Logo.webp';
 import { useLanguage } from '../i18n';
 import { gsap } from 'gsap';
